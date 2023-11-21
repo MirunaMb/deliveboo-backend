@@ -13,13 +13,15 @@
                 </tr>
             </thead>
             <tbody>
-                @forelse ($restaurants as $restaurant)
+
+                
+                {{-- @forelse ($restaurants as $restaurant) --}}
                     <tr>
                         <th scope="row">{{ $restaurant->id }}</th>
                         <td>{{ $restaurant->name }}</td>
                         <td>{{ $restaurant->address}}</td>
                         <td>{{ $restaurant->phone_number }}</td>
-                        <td>{{ $restaurant->vat }}</td>
+                        <td>{{ $restaurant->vat }}</td> 
 
 
                         {{-- <td>
@@ -38,12 +40,12 @@
                                 <i class="fa-solid
                                 fa-trash"></i>
                             </a>
-                        </td> --}}
+                        </td>  --}}
                     </tr>
 
-                @empty
-                    <td colspan="6"><i>Non ci sono risultati</i></td>
-                @endforelse
+                 {{-- @empty
+                    <td colspan="6"><i>Non ci sono risultati</i></td> --}}
+               {{-- @endforelse --}}
             </tbody>
         </table>
     </div>
