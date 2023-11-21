@@ -17,11 +17,11 @@ class RestaurantSeeder extends Seeder
     public function run()
     {
         $_restaurants = [
-            ['name' => 'ristorante_1', 'description' => 'Linguaggio di markup strutturale.', 'address' => 'via vatte a pesca', 'phone_number' =>'333333333333', 'image' =>''],
-            ['name' => 'ristorante_2', 'description' => 'Foglio di stile per presentazione.', 'address' => 'via vatte a pesca', 'phone_number' =>'333333333333', 'image' =>''],
-            ['name' => 'ristorante_3', 'description' => 'Linguaggio di scripting client-side.', 'address' => 'via vatte a pesca', 'phone_number' =>'333333333333', 'image' =>''],
-            ['name' => 'ristorante_4', 'description' => 'Framework JavaScript per interfacce utente.', 'address' => 'via vatte a pesca', 'phone_number' =>'333333333333', 'image' =>''],
-            ['name' => 'ristorante_5', 'description' => 'Linguaggio di scripting server-side.', 'address' => 'via vatte a pesca', 'phone_number' =>'333333333333', 'image' =>''],
+            ['name' => 'ristorante_1', 'description' => 'Linguaggio di markup strutturale.', 'address' => 'via vatte a pesca', 'phone_number' =>'333333333333','vat' => '86334519757' ,'image' =>''],
+            ['name' => 'ristorante_2', 'description' => 'Foglio di stile per presentazione.', 'address' => 'via vatte a pesca', 'phone_number' =>'333333333333', 'vat' => '96334519757' ,'image' =>''],
+            ['name' => 'ristorante_3', 'description' => 'Linguaggio di scripting client-side.', 'address' => 'via vatte a pesca', 'phone_number' =>'333333333333', 'vat' => '76334519757' ,'image' =>''],
+            ['name' => 'ristorante_4', 'description' => 'Framework JavaScript per interfacce utente.', 'address' => 'via vatte a pesca', 'phone_number' =>'333333333333', 'vat' => '66334519757' ,'image' =>''],
+            ['name' => 'ristorante_5', 'description' => 'Linguaggio di scripting server-side.', 'address' => 'via vatte a pesca', 'phone_number' =>'333333333333', 'vat' => '56334519757' ,'image' =>''],
         ];
 
         foreach ($_restaurants as $_restaurant){
@@ -30,6 +30,7 @@ class RestaurantSeeder extends Seeder
             $restaurant->description = $_restaurant['description'];
             $restaurant->address = $_restaurant['address'];
             $restaurant->phone_number = $_restaurant['phone_number'];
+            $restaurant->vat = $_restaurant['vat'];
             $restaurant->image = $_restaurant['image'];
             $restaurant->save();
         }
