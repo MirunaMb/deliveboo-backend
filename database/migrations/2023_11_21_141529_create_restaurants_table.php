@@ -17,9 +17,9 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->text('description');
-            $table->string('image')->nullable();
             $table->string('address');
             $table->string('phone_number');
+            $table->string('image')->nullable();
             $table->timestamps();
         });
     }
