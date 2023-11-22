@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Arr;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
 
@@ -73,7 +75,12 @@ class RestaurantController extends Controller
         $restaurant->vat = $data['vat'];
         // autentificazione attraverso AUTH-> collega la tabella ristorante con user_id
         $restaurant->user_id = Auth::id();
-        // $restaurant->image = $data['image'];
+        $restaurant->image = $data['image'];
+
+        if ($request->hasFile('image')) {
+            $image_path = Storage::put('uploads/restaurants/image', $data['image']);
+            $restaurant->image = $image_path;
+        }
 
         $restaurant->save();
 
@@ -117,16 +124,33 @@ class RestaurantController extends Controller
      */
     public function update(Request $request, Restaurant $restaurant)
     {
+        // FUNZIONA !
         $data = $this->validation($request->all());
         $restaurant->update($data);
+
+        if ($request->hasFile('image')) {
+
+            if ($restaurant->image) {
+                Storage::delete($restaurant->image);
+            }
+
+            $image_path = Storage::put('uploads/restaurants/image', $data['image']);
+            $restaurant->image = $image_path;
+        }
         $restaurant->save();
+
 
         if (Arr::exists($data, "types"))
             $restaurant->types()->sync($data["types"]);
         else
             $restaurant->types()->detach();
 
-        return redirect()->route('admin.restaurant.show', $restaurant);
+
+
+        return redirect()->route('admin.restaurant.show', compact('restaurant'));
+
+
+
     }
 
     /**
@@ -134,9 +158,11 @@ class RestaurantController extends Controller
      *
      * @param  int  $id
      */
-    public function destroy($id)
+    public function destroy(Restaurant $restaurant)
     {
-        //
+        if (!empty($restaurant->image)) {
+            Storage::delete($restaurant->image);
+        }
     }
 
     private function validation($data)
@@ -149,8 +175,9 @@ class RestaurantController extends Controller
                 'phone_number' => 'required|string|max:50',
                 'vat' => 'required|string|max:50',
                 'types' => 'required',
-                'description' => 'required'
-                // 'image' => 'nullable|image|max:1024',
+                'description' => 'required',
+                'image' => 'nullable|image|max:1024'
+
             ],
             [
                 'name.required' => 'Il nome è obbligatorio',
@@ -174,7 +201,7 @@ class RestaurantController extends Controller
                 'description.required' => 'La descrizione è obbligatorio',
 
                 // DA GESTIRE QUANDO INSERIAMO IMAGE
-                // 'image.image' => 'L\'immagine',
+                'image.image' => 'L\'immagine',
                 // 'image.max' => 'La partita IVA deve contenere un massimo di 50 caratteri',
 
 
@@ -183,4 +210,14 @@ class RestaurantController extends Controller
         return $validator;
 
     }
+    public function deleteImage(Restaurant $restaurant)
+    { //passo la classe e l/'id
+        if ($restaurant->image) {
+            Storage::delete($restaurant->image); //cancello l'immagine del post
+            $restaurant->image = null; //svuoto il campo
+            $restaurant->save(); // salvo il project
+            return redirect()->back();
+        }
+    }
 }
+
