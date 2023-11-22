@@ -10,8 +10,6 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
 
-use Illuminate\Support\Arr;
-
 use App\Models\Restaurant;
 use App\Models\Type;
 
