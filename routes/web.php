@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\Admin\PageController as AdminPageController;
 use App\Http\Controllers\Guest\PageController as GuestPageController;
-use App\Http\Controllers\RestaurantController;
+use App\Http\Controllers\Admin\RestaurantController;
 
 /*
 |--------------------------------------------------------------------------
