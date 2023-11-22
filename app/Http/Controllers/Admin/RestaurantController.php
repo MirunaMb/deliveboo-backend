@@ -1,6 +1,7 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
+use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -81,7 +82,7 @@ class RestaurantController extends Controller
      */
     public function show($id)
     {
-        //
+
     }
 
     /**
@@ -89,9 +90,9 @@ class RestaurantController extends Controller
      *
      * @param  int  $id
      */
-    public function edit($id)
+    public function edit(Restaurant $restaurant)
     {
-        
+        return view('admin.restaurants.edit', compact('restaurant'));
     }
 
     /**
@@ -100,9 +101,12 @@ class RestaurantController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Restaurant $restaurant)
     {
-        //
+        $data = $this->validation($request->all());
+        $restaurant->update($data);
+        $restaurant->save();
+        return redirect()->route('admin.restaurant.index');
     }
 
     /**
