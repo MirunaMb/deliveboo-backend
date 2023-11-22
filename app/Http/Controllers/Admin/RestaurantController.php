@@ -9,7 +9,11 @@ use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
+
+use Illuminate\Support\Arr;
+
 use App\Models\Restaurant;
+use App\Models\Type;
 
 class RestaurantController extends Controller
 {
@@ -45,12 +49,13 @@ class RestaurantController extends Controller
     public function create()
     {
         $user = Auth::user();
+        $types = Type::orderBy('label')->get();
 
         if ($user->restaurant) {
             abort(403, 'Non è possibile creare un nuovo ristorante');
         }
 
-        return view('admin.restaurants.create');
+        return view('admin.restaurants.create', compact('types'));
     }
 
     /**
@@ -79,6 +84,10 @@ class RestaurantController extends Controller
 
         $restaurant->save();
 
+        /* try add technology relationship to store */
+        if (Arr::exists($data, "types"))
+            $restaurant->types()->attach($data["types"]);
+
         return redirect()->route('admin.restaurant.index');
 
     }
@@ -100,7 +109,11 @@ class RestaurantController extends Controller
      */
     public function edit(Restaurant $restaurant)
     {
-        return view('admin.restaurants.edit', compact('restaurant'));
+        $types = Type::orderBy('label')->get();
+
+        $restaurant_types = $restaurant->types->pluck('id')->toArray();
+
+        return view('admin.restaurants.edit', compact('restaurant', 'types', 'restaurant_types'));
     }
 
     /**
@@ -126,9 +139,15 @@ class RestaurantController extends Controller
         }
         $restaurant->save();
 
-        return redirect()->route('admin.restaurant.show', compact('restaurant'));
-       
 
+        if (Arr::exists($data, "types"))
+            $restaurant->types()->sync($data["types"]);
+        else
+            $restaurant->types()->detach();
+
+      
+
+        return redirect()->route('admin.restaurant.show', compact('restaurant'));
     }
 
     /**
@@ -152,8 +171,10 @@ class RestaurantController extends Controller
                 'address' => 'required|string|max:50',
                 'phone_number' => 'required|string|max:50',
                 'vat' => 'required|string|max:50',
+                'types' => 'required',
                 'description' => 'required',
                 'image' => 'nullable|image|max:1024',
+
             ],
             [
                 'name.required' => 'Il nome è obbligatorio',
@@ -171,6 +192,8 @@ class RestaurantController extends Controller
                 'vat.required' => 'La partita IVA è obbligatorio',
                 'vat.string' => 'La partita IVA è una stringa',
                 'vat.max' => 'La partita IVA deve contenere un massimo di 50 caratteri',
+
+                'types.required' => 'la/e tipologia/e è necessaria/e',
 
                 'description.required' => 'La descrizione è obbligatorio',
 
