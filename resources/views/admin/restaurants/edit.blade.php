@@ -2,7 +2,9 @@
 
 @section('content')
     <div class="container">
-
+        <a href="{{ route('admin.restaurant.index')}}" class="btn btn-primary mt-3"> 
+            <- Torna alla tabella 
+        </a>
         <form method="POST" action="{{ route('admin.restaurant.update', $restaurant) }}" class="row">
             @csrf
             @method('PATCH')

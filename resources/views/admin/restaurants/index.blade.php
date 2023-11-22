@@ -30,18 +30,18 @@
                     <td>{{ $restaurant->phone_number }}</td>
                     <td>{{ $restaurant->vat }}</td>
                     <td>
-                        <a href="{{ route('admin.restaurant.edit', $restaurant) }}" class="mx-2">
+                        <a href="{{ route('admin.restaurant.edit', $restaurant) }}" class="mx-1">
                             <i class="fa-solid fa-pen-to-square"></i>
                         </a>
                     </td>
 
-                    {{-- <td>
-                            <a href="{{ route('admin.projects.show', $project) }}" class="mx-2">
-                                <i class="fa-solid fa-eye"></i>
-                            </a>
-                        </td>
+                    <td>
+                        <a href="{{ route('admin.restaurant.show', $restaurant) }}" class="mx-1">
+                            <i class="fa-solid fa-eye"></i>
+                        </a>
+                    </td>
                         
-                        <td>
+                        {{-- <td>
                             <a href="javascript:void(0)" class="mx-2 text-danger" data-bs-toggle="modal"
                                 data-bs-target="#deleteModal-{{ $project->id }}">
                                 <i class="fa-solid

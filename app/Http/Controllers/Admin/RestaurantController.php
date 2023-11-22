@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
+
 use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
@@ -80,9 +81,9 @@ class RestaurantController extends Controller
      *
      * @param  int  $id
      */
-    public function show($id)
+    public function show(Restaurant $restaurant)
     {
-
+        return view('admin.restaurants.show', compact('restaurant'));
     }
 
     /**
@@ -149,12 +150,12 @@ class RestaurantController extends Controller
                 'vat.max' => 'La partita IVA deve contenere un massimo di 50 caratteri',
 
                 'description.required' => 'La descrizione è obbligatorio',
-                
+
                 // DA GESTIRE QUANDO INSERIAMO IMAGE
                 // 'image.image' => 'L\'immagine',
                 // 'image.max' => 'La partita IVA deve contenere un massimo di 50 caratteri',
 
-                
+
             ]
         )->validate();
         return $validator;
