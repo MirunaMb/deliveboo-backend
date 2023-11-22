@@ -28,6 +28,7 @@ Route::middleware(['auth', 'verified'])
 
     Route::get('/', [AdminPageController::class, 'index'])->name('home');
     Route::resource('restaurant', RestaurantController::class);
+    Route::delete('/restaurants/{restaurant}/delete-image',[RestaurantController::class, 'deleteImage'])->name('restaurants.delete-image');
   });
 
 require __DIR__ . '/auth.php';
