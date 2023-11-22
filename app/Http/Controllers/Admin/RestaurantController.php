@@ -140,17 +140,13 @@ class RestaurantController extends Controller
         $restaurant->save();
 
 
+
         if (Arr::exists($data, "types"))
             $restaurant->types()->sync($data["types"]);
         else
             $restaurant->types()->detach();
 
-
-
-        return redirect()->route('admin.restaurant.show', compact('restaurant'));
-
-
-
+        return redirect()->route('admin.restaurant.show', $restaurant);
     }
 
     /**
@@ -177,7 +173,6 @@ class RestaurantController extends Controller
                 'types' => 'required',
                 'description' => 'required',
                 'image' => 'nullable|image|max:1024'
-
             ],
             [
                 'name.required' => 'Il nome è obbligatorio',
