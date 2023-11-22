@@ -147,8 +147,8 @@ class RestaurantController extends Controller
                 'vat.required' => 'La partita IVA è obbligatorio',
                 'vat.string' => 'La partita IVA è una stringa',
                 'vat.max' => 'La partita IVA deve contenere un massimo di 50 caratteri',
-                
-                'description.required' => 'La partita IVA è obbligatorio',
+
+                'description.required' => 'La descrizione è obbligatorio',
                 
                 // DA GESTIRE QUANDO INSERIAMO IMAGE
                 // 'image.image' => 'L\'immagine',
