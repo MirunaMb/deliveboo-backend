@@ -18,21 +18,21 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
-        $_users = [
-            ['name' => 'jordi', 'email' => 'jordi@info.it', 'password' => 'ciaociao',],
-            ['name' => 'luigi', 'email' => 'luigi@info.it', 'password' => 'ciaociao',],
-            ['name' => 'laura', 'email' => 'laura@info.it', 'password' => 'ciaociao',],
-            ['name' => 'gabriele', 'email' => 'gabriele@info.it', 'password' => 'ciaociao',],
-            ['name' => 'miruna', 'email' => 'miruna@info.it', 'password' => 'ciaociao',],
+        // $_users = [
+        //     ['name' => 'jordi', 'email' => 'jordi@info.it', 'password' => 'ciaociao',],
+        //     ['name' => 'luigi', 'email' => 'luigi@info.it', 'password' => 'ciaociao',],
+        //     ['name' => 'laura', 'email' => 'laura@info.it', 'password' => 'ciaociao',],
+        //     ['name' => 'gabriele', 'email' => 'gabriele@info.it', 'password' => 'ciaociao',],
+        //     ['name' => 'miruna', 'email' => 'miruna@info.it', 'password' => 'ciaociao',],
 
-        ];
+        // ];
 
-        foreach ($_users as $_user) {
-            $user = new User();
-            $user->name = $_user['name'];
-            $user->email = $_user['email'];
-            $user->password = Hash::make($_user['password']);
-            $user->save();
-        }
+        // foreach ($_users as $_user) {
+        //     $user = new User();
+        //     $user->name = $_user['name'];
+        //     $user->email = $_user['email'];
+        //     $user->password = Hash::make($_user['password']);
+        //     $user->save();
+        // }
     }
 }
