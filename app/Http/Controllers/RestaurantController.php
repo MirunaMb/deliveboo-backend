@@ -40,6 +40,12 @@ class RestaurantController extends Controller
      */
     public function create()
     {
+        $user = Auth::user();
+
+        if ($user->restaurant) {
+            abort(403, 'Non è possibile creare un nuovo ristorante');
+        }
+
         return view('admin.restaurants.create');
     }
 
@@ -85,7 +91,7 @@ class RestaurantController extends Controller
      */
     public function edit($id)
     {
-        //
+        
     }
 
     /**
