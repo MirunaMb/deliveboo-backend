@@ -11,7 +11,7 @@
             Edita 🖊
         </a>
     </div>
-    <div class="card mt-3" style="width: 60rem;">
+    <div class="card mt-3 mb-3" style="width: 40rem;">
         {{-- per l'immagine nella show.. --}}
          <img src="{{ asset('/storage/' . $restaurant->image) }}" class="card-img-top" alt="">
             <div class="card-head">
