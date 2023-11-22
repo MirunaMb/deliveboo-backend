@@ -55,10 +55,36 @@
                 @enderror
             </div>
 
+            {{--* CHECKBOXS per selezionare la\le Technology --}}
+           <label class="form-label">Tipologie</label>
+           <div class="form-check bg-light text-primary p-3">
+                <div class="row">
+                    @foreach ($types as $type)
+                    <div class="col-3 mb-3">
+                        <input type="checkbox" 
+                            id="type-{{ $type->id }}"
+                            value="{{ $type->id }}"
+                            name="types[]"
+                            class="form-check-control"
+                            @if (in_array($type->id, old('types', $restaurant_types ?? []))) checked @endif
+                        >
+                        <label for="type-{{ $type->id }}">
+                            {{ $type->label }}
+                        </label>
+                    </div>
+                    @endforeach
+                </div>
+           </div>
+           @error('types')
+            <div class="invalid-feedback">
+                {{ $message }}
+            </div>
+           @enderror
+
             <div class="col-12 mb-4">
                 <label for="description" class="form-label">Descrizione</label>
                 <textarea name="description" id="description" class="form-control @error('description') is-invalid @enderror"
-                    value="{{ old('description') ?? $restaurant->description }}" rows="5"></textarea>
+                    value="{{ old('description') ?? $restaurant->description }}" rows="5" value="{{ old('description') ?? $restaurant->description }}">{{ old('description') ?? $restaurant->description }}></textarea>
                 @error('description')
                     <div class="invalid-feedback">
                         {{ $message }}

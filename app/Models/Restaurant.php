@@ -16,14 +16,18 @@ class Restaurant extends Model
         'address',
         'phone_number',
         'vat',
+        'label',
         'image'
     ];
-
+    //!USER
     public function user()
     {
 
         return $this->belongsTo(User::class);
     }
-
-    
+    //!Types
+    public function types()
+    {
+        return $this->belongsToMany(Type::class);
+    }
 }
