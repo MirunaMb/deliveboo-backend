@@ -110,6 +110,7 @@ class DishController extends Controller
     public function update(Request $request, Dish $dish)
     {
         $data = $this->validation($request->all());
+        $dish->visible = Arr::get($data, 'visible', false);
         if ($request->hasFile('image')) {
             if ($dish->image) {
                 Storage::delete($dish->image);
@@ -117,13 +118,14 @@ class DishController extends Controller
             $image_path = Storage::put('uploads/dishes/image', $data['image']);
             $dish->image = $image_path;
         }
+
         $dish->save();
 
         $dish = Dish::findOrFail($dish->id);
+
         $dish->update($data);
 
-        return redirect()->route('admin.dishes.show', $dish->id); 
-
+        return redirect()->route('admin.dishes.show', $dish->id);
     }
 
     /**
@@ -163,8 +165,6 @@ class DishController extends Controller
                 'description.required' => 'La descrizione è obbligatorio',
 
                 'image.max' => 'L\'immagine non può superare i 1024KB',
-
-
             ]
         )->validate();
         return $validator;

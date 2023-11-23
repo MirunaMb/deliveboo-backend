@@ -22,6 +22,7 @@
                     <th scope="col">edit</th>
                     <th scope="col">show</th>
                     <th scope="col">delete</th>
+                    <th scope="col">Visibilità</th>
                 </tr>
             </thead>
             <tbody>
@@ -46,7 +47,41 @@
                                 <i class="fa-solid fa-eye"></i>
                             </a>
                         </td>
-                        <td>Delete</td>
+                        <td>
+                            <a href="#" class="mx-1" data-bs-toggle="modal"
+                                data-bs-target="#delete-modal-{{ $dish->id }}">
+                                <i class="fa-solid fa-trash-arrow-up fa-xl text-danger"></i>
+                            </a>
+                            {{-- * MODAL per il delete del piatto --}}
+                            <div class="modal fade" id="delete-modal-{{ $dish->id }}" tabindex="-1"
+                                aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h1 class="modal-title fs-5" id="exampleModalLabel">Elimina Piatto</h1>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            Do you want to delete "<strong>{{ $dish->title }}</strong>"? Click <span
+                                                class="text-danger">"Delete"</span> to continue or go <span
+                                                class="text-primary">"Back"</span> to dishes.
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-primary"
+                                                data-bs-dismiss="modal">Back</button>
+
+                                            <form action="{{ route('admin.dishes.destroy', $dish) }}" method="POST"
+                                                class="mx-2">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button class="btn btn-danger">Delete</button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
                     </tr>
                 @endforeach
             </tbody>
