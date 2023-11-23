@@ -55,7 +55,7 @@
                 {{-- @endforelse --}}
             </tbody>
         </table>
-        <a href="" class="btn btn-warning"> 
+        <a href="{{ route('admin.dishes.index')}}" class="btn btn-warning">
            I miei piatti
         </a>
         <div class="mt-5">
