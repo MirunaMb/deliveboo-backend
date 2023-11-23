@@ -2,16 +2,17 @@
 
 namespace App\Http\Controllers\Admin;
 
+use Illuminate\Support\Facades\Storage;
+use App\Models\Restaurant;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
+
 
 use App\Models\Dish;
 
 use Illuminate\Support\Arr;
-use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Auth;
-
-use Illuminate\Support\Facades\Validator;
 
 class DishController extends Controller
 {
@@ -89,11 +90,14 @@ class DishController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * *@return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Dish $dish)
     {
-        //
+        $restaurants = Restaurant::all();
+        // dd($dish);
+        return view('admin.dishes.edit', compact('restaurants', 'dish'));
+
     }
 
     /**
@@ -101,22 +105,39 @@ class DishController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * *@return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Dish $dish)
     {
-        //
+        $data = $this->validation($request->all());
+        if ($request->hasFile('image')) {
+            if ($dish->image) {
+                Storage::delete($dish->image);
+            }
+            $image_path = Storage::put('uploads/dishes/image', $data['image']);
+            $dish->image = $image_path;
+        }
+        $dish->save();
+
+        $dish = Dish::findOrFail($dish->id);
+        $dish->update($data);
+
+        return redirect()->route('admin.dishes.show', $dish->id); 
+
     }
 
     /**
      * Remove the specified resource from storage.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * *@return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Dish $dish)
     {
-        //
+        $dish = Dish::findOrFail($dish->id);
+        $dish->delete();
+
+        return redirect()->route('admin.dishes.index');
     }
 
     private function validation($data)
@@ -125,37 +146,24 @@ class DishController extends Controller
             $data,
             [
                 'name' => 'required|string|max:50',
-                'description' => 'required|string|max:250',
-                'visible' => 'nullable|boolean|',
-                'price' => 'required|numeric|between:0,99.99',
+                'description' => 'required',
+                'price' => 'required',
                 'image' => 'nullable|image|max:1024',
                 'restaurant_id' => 'nullable|exists:restaurants,id'
+
             ],
             [
-                /* 'name.required' => 'Il nome è obbligatorio',
+                'name.required' => 'Il nome è obbligatorio',
                 'name.string' => 'Il nome deve essere una stringa',
                 'name.max' => 'Il nome deve contenere un massimo di 50 caratteri',
 
-                            'address.required' => 'L\'indirizzo è obbligatorio',
-                'address.string' => 'L\'indirizzo deve essere una stringa',
-                'address.max' => 'L\'indirizzo deve contenere un massimo di 50 caratteri',
+                'price.required' => 'Il prezzo è obbligatorio',
 
-                            'phone_number.required' => 'Il numero di telefono è obbligatorio',
-                'phone_number.string' => 'Il numero di telefono è una stringa',
-                'phone_number.max' => 'Il numero di telefono deve contenere un massimo di 50 caratteri',
+                'description.required' => 'La descrizione è obbligatorio',
 
-                            'vat.required' => 'La partita IVA è obbligatorio',
-                'vat.string' => 'La partita IVA è una stringa',
-                'vat.max' => 'La partita IVA deve contenere un massimo di 50 caratteri',
+                'image.max' => 'L\'immagine non può superare i 1024KB',
 
-                            'types.required' => 'la/e tipologia/e è necessaria/e',
-
-                            'description.required' => 'La descrizione è obbligatorio', */
-
-                // DA GESTIRE QUANDO INSERIAMO IMAGE
-                /* 'image.image' => 'L\'immagine', */
-                // 'image.max' => 'La partita IVA deve contenere un massimo di 50 caratteri',
-
+                
 
             ]
         )->validate();
