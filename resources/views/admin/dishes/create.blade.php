@@ -2,14 +2,17 @@
 
 @section('content')
     <div class="container">
-
-
-       <form method="POST" action="{{ route('admin.dishes.store') }}" class="row" enctype="multipart/form-data">
+        <div class="container mt-2">
+            <a href="{{ route('admin.dishes.index') }}" class="btn btn-primary">
+                <- Torna alla tabella </a>
+        </div>
+        <form method="POST" action="{{ route('admin.dishes.store') }}" class="row" enctype="multipart/form-data">
             @csrf
-            
+
             <div class="col-12 my-4">
                 <label for="name" class="form-label ">Nome</label>
-                <input type="text" name="name" id="name" class="form-control @error('name') is-invalid @enderror">
+                <input type="text" name="name" id="name"
+                    class="form-control @error('name') is-invalid @enderror">
                 @error('name')
                     <div class="invalid-feedback">
                         {{ $message }}
@@ -46,7 +49,7 @@
                 @error('image')
                     <div class="invalid-feedback">
                         {{ $message }}
-                    </div> 
+                    </div>
                 @enderror
             </div>
 
@@ -63,7 +66,7 @@
             </div>
 
             <div class="col-12 mb-4">
-                <button type="submit" class="btn btn-secondary">Salva</button>
+                <button type="submit" class="btn btn-success">Salva</button>
             </div>
         </form>
     </div>
