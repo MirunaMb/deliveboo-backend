@@ -15,6 +15,7 @@ return new class extends Migration {
         Schema::create('dishes', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            // $table->foreign('restaurant_id')->references('id')->on('restaurants')->onDelete('cascade');
             $table->text('description');
             $table->boolean('visible')->default(true);
             $table->string('image');

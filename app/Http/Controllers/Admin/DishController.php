@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use Illuminate\Support\Facades\Storage;
 use App\Models\Restaurant;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -79,6 +80,14 @@ class DishController extends Controller
     public function update(Request $request, Dish $dish)
     {
         $data = $this->validation($request->all());
+        if ($request->hasFile('image')) {
+            if ($dish->image) {
+                Storage::delete($dish->image);
+            }
+            $image_path = Storage::put('uploads/dishes/image', $data['image']);
+            $dish->image = $image_path;
+        }
+        $dish->save();
 
         $dish = Dish::findOrFail($dish->id);
         $dish->update($data);
