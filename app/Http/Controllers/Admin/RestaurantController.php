@@ -73,8 +73,6 @@ class RestaurantController extends Controller
         $restaurant->vat = $data['vat'];
         // autentificazione attraverso AUTH-> collega la tabella ristorante con user_id
         $restaurant->user_id = Auth::id();
-        $restaurant->image = $data['image'];
-
         if ($request->hasFile('image')) {
             $image_path = Storage::put('uploads/restaurants/image', $data['image']);
             $restaurant->image = $image_path;
