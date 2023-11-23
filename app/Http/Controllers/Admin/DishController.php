@@ -11,6 +11,12 @@ use Illuminate\Support\Facades\Validator;
 
 use App\Models\Dish;
 
+use Illuminate\Support\Arr;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Auth;
+
+use Illuminate\Support\Facades\Validator;
+
 class DishController extends Controller
 {
     /**
@@ -31,7 +37,11 @@ class DishController extends Controller
      */
     public function create()
     {
+        $user = Auth::user();
         return view('admin.dishes.create');
+
+        // $restaurantId = Auth::user()->restaurant->id;
+        // return view('admin.dishes.create', compact('restaurantId'));
     }
 
     /**
@@ -42,18 +52,41 @@ class DishController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        $data = $this->validation($request->all());
+
+
+        $dish = new Dish();
+        $dish->name = $data['name'];
+        $dish->description = $data['description'];
+        $dish->visible = Arr::get($data, 'visible', false);
+        $dish->price = $data['price'];
+
+        // autentificazione attraverso AUTH-> collega la tabella ristorante con user_id
+        $dish->restaurant_id = Auth::id();
+
+        // $restaurantId = Auth::user()->restaurant->id;
+        // $dish->restaurant_id = $restaurantId;
+
+        if ($request->hasFile('image')) {
+            $image_path = Storage::put('uploads/dishes/image', $data['image']);
+            $dish->image = $image_path;
+        }
+
+        $dish->save();
+
+        return redirect()->route('admin.dishes.index');
     }
 
     /**
      * Display the specified resource.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     ** @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Dish $dish)
     {
-        //
+        /*  return view('admin.dishes.show', compact('dish')); */
     }
 
     /**

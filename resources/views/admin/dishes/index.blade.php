@@ -38,5 +38,8 @@
             @endforeach
         </tbody>
     </table>
+    <a href="{{ route('admin.dishes.create')}}" class="btn btn-primary">
+        + Crea nuovo piatto
+     </a>
 </div>
 @endsection
