@@ -148,9 +148,7 @@ class RestaurantController extends Controller
      */
     public function destroy(Restaurant $restaurant)
     {
-        if (!empty($restaurant->image)) {
-            Storage::delete($restaurant->image);
-        }
+        //
     }
 
     private function validation($data)
@@ -196,15 +194,6 @@ class RestaurantController extends Controller
         )->validate();
         return $validator;
 
-    }
-    public function deleteImage(Restaurant $restaurant)
-    { //passo la classe e l/'id
-        if ($restaurant->image) {
-            Storage::delete($restaurant->image); //cancello l'immagine del post
-            $restaurant->image = null; //svuoto il campo
-            $restaurant->save(); // salvo il project
-            return redirect()->back();
-        }
     }
 }
 
