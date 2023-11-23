@@ -132,9 +132,12 @@ class DishController extends Controller
      * @param  int  $id
      * *@return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Dish $dish)
     {
-        //
+        $dish = Dish::findOrFail($dish->id);
+        $dish->delete();
+
+        return redirect()->route('admin.dishes.index');
     }
 
     private function validation($data)
