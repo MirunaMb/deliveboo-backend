@@ -31,7 +31,7 @@
 
             <div class="col-12 my-4">
                 <label for="price" class="form-label ">Prezzo</label>
-                <input type="number" min="0" name="price" id="price"
+                <input type="number" name="price" id="price" pattern="[0-9]+([\.,])[0-9]+?" step="0.01"
                     class="form-control @error('price') is-invalid @enderror">
                 @error('price')
                     <div class="invalid-feedback">
@@ -55,19 +55,16 @@
             <div class="form-check bg-light text-primary p-3">
                 <label for="visible">Non Disponibile</label>
                 <input type="checkbox" id="visible" name="visible" value="1">
+                @error('visible')
+                    <div class="invalid-feedback">
+                        {{ $message }}
+                    </div>
+                @enderror
             </div>
-    </div>
 
-    <div class="col-12 mb-4">
-        <button class="btn btn-secondary">Salva</button>
-    </div>
-    </div>
-    @error('visible')
-        <div class="invalid-feedback">
-            {{ $message }}
-        </div>
-    @enderror
-    </form>
-
+            <div class="col-12 mb-4">
+                <button class="btn btn-secondary">Salva</button>
+            </div>
+        </form>
     </div>
 @endsection
