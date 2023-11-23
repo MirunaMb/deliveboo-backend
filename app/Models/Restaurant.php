@@ -19,15 +19,21 @@ class Restaurant extends Model
         'label',
         'image'
     ];
-    //!USER
+    //*USER
     public function user()
     {
 
         return $this->belongsTo(User::class);
     }
-    //!Types
+    //*Types
     public function types()
     {
         return $this->belongsToMany(Type::class);
+    }
+
+    //*DISHES
+    public function dishes()
+    {
+        return $this->hasMany(dish::class);
     }
 }

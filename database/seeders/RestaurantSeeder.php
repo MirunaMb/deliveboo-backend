@@ -25,7 +25,7 @@ class RestaurantSeeder extends Seeder
         //     ['name' => 'ristorante_5', 'description' => 'Linguaggio di scripting server-side.', 'address' => 'via vatte a pesca', 'phone_number' => '333333333333', 'vat' => '56334519757', 'image' => '', 'user_id' => 5],
         // ];
 
-    
+
 
         // foreach ($_restaurants as $_restaurant) {
         //     $restaurant = new Restaurant();
@@ -39,6 +39,5 @@ class RestaurantSeeder extends Seeder
         //     $user = User::find($_restaurant['user_id']);
         //     $user->restaurant()->save($restaurant);
         // }
-
     }
 }
