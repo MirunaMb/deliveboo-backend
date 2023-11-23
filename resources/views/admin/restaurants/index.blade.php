@@ -55,6 +55,9 @@
                 {{-- @endforelse --}}
             </tbody>
         </table>
+        <a href="" class="btn btn-warning"> 
+           I miei piatti
+        </a>
         <div class="mt-5">
             <h5>Descrizione Ristorante</h5>
             <p>{{$restaurant->description}}</p>
