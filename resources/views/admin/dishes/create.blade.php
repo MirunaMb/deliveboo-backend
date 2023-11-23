@@ -7,6 +7,8 @@
         <form method="POST" action="{{ route('admin.dishes.store') }}" class="row" enctype="multipart/form-data">
             @csrf
 
+            {{-- <input type="hidden" name="restaurant_id" value="{{ $restaurantId }}"> --}}
+
             <div class="col-12 my-4">
                 <label for="name" class="form-label ">Nome</label>
                 <input type="text" name="name" id="name" class="form-control @error('name') is-invalid @enderror">
@@ -53,7 +55,7 @@
             {{-- * CHECKBOXS per selezionare la\le Technology --}}
             <label class="form-label">Tipologie</label>
             <div class="form-check bg-light text-primary p-3">
-                <label for="visible">Non Disponibile</label>
+                <label for="visible">Disponibile</label>
                 <input type="checkbox" id="visible" name="visible" value="1">
                 @error('visible')
                     <div class="invalid-feedback">
@@ -63,7 +65,7 @@
             </div>
 
             <div class="col-12 mb-4">
-                <button class="btn btn-secondary">Salva</button>
+                <button type="submit" class="btn btn-secondary">Salva</button>
             </div>
         </form>
     </div>

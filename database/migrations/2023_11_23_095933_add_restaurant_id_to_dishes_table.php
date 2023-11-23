@@ -16,8 +16,8 @@ return new class extends Migration {
             $table->foreignId('restaurant_id')
                 ->after('id')
                 ->nullable()
-                ->constrained()
-                ->nullOnDelete();
+                ->constrained();
+                // ->nullOnDelete();
         });
     }
 

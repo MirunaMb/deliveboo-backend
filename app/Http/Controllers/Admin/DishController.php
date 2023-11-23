@@ -33,7 +33,11 @@ class DishController extends Controller
      */
     public function create()
     {
+        $user = Auth::user();
         return view('admin.dishes.create');
+
+        // $restaurantId = Auth::user()->restaurant->id;
+        // return view('admin.dishes.create', compact('restaurantId'));
     }
 
     /**
@@ -44,16 +48,21 @@ class DishController extends Controller
      */
     public function store(Request $request)
     {
+
         $data = $this->validation($request->all());
+
 
         $dish = new Dish();
         $dish->name = $data['name'];
         $dish->description = $data['description'];
-        $dish->visible = $data['visible'];
+        $dish->visible = Arr::get($data, 'visible', false);
         $dish->price = $data['price'];
 
         // autentificazione attraverso AUTH-> collega la tabella ristorante con user_id
         $dish->restaurant_id = Auth::id();
+
+        // $restaurantId = Auth::user()->restaurant->id;
+        // $dish->restaurant_id = $restaurantId;
 
         if ($request->hasFile('image')) {
             $image_path = Storage::put('uploads/dishes/image', $data['image']);
@@ -117,30 +126,31 @@ class DishController extends Controller
             [
                 'name' => 'required|string|max:50',
                 'description' => 'required|string|max:250',
-                'visible' => 'required|boolean',
+                'visible' => 'nullable|boolean|',
                 'price' => 'required|numeric|between:0,99.99',
-                'image' => 'nullable|image|max:1024'
+                'image' => 'nullable|image|max:1024',
+                'restaurant_id' => 'nullable|exists:restaurants,id'
             ],
             [
                 /* 'name.required' => 'Il nome è obbligatorio',
                 'name.string' => 'Il nome deve essere una stringa',
                 'name.max' => 'Il nome deve contenere un massimo di 50 caratteri',
 
-                'address.required' => 'L\'indirizzo è obbligatorio',
+                            'address.required' => 'L\'indirizzo è obbligatorio',
                 'address.string' => 'L\'indirizzo deve essere una stringa',
                 'address.max' => 'L\'indirizzo deve contenere un massimo di 50 caratteri',
 
-                'phone_number.required' => 'Il numero di telefono è obbligatorio',
+                            'phone_number.required' => 'Il numero di telefono è obbligatorio',
                 'phone_number.string' => 'Il numero di telefono è una stringa',
                 'phone_number.max' => 'Il numero di telefono deve contenere un massimo di 50 caratteri',
 
-                'vat.required' => 'La partita IVA è obbligatorio',
+                            'vat.required' => 'La partita IVA è obbligatorio',
                 'vat.string' => 'La partita IVA è una stringa',
                 'vat.max' => 'La partita IVA deve contenere un massimo di 50 caratteri',
 
-                'types.required' => 'la/e tipologia/e è necessaria/e',
+                            'types.required' => 'la/e tipologia/e è necessaria/e',
 
-                'description.required' => 'La descrizione è obbligatorio', */
+                            'description.required' => 'La descrizione è obbligatorio', */
 
                 // DA GESTIRE QUANDO INSERIAMO IMAGE
                 /* 'image.image' => 'L\'immagine', */
