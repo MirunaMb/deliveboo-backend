@@ -82,6 +82,12 @@
                                 </div>
                             </div>
                         </td>
+                        <td>
+                            <label class="switch">
+                                <input type="checkbox" name="visible" @if ($dish->visible) checked @endif>
+                                <span class="slider round checkbox-visible" data-id="{{ $dish->id }}"></span>
+                            </label>
+                        </td>
                     </tr>
                 @endforeach
             </tbody>
