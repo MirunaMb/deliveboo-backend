@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Models\Restaurant;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
@@ -56,11 +57,14 @@ class DishController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * *@return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Dish $dish)
     {
-        //
+        $restaurants = Restaurant::all();
+        dd($dish);
+        return view('admin.dishes.edit', compact('restaurants', 'dish'));
+
     }
 
     /**

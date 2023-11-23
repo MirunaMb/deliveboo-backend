@@ -3,8 +3,9 @@
 @section('content')
     <div class="container">
 
-
-        {{-- <form method="POST" action="{{ route('admin.dishes.store') }}" class="row" enctype="multipart/form-data">
+        {{-- Modificare --}}
+        
+        <form method="POST" action="{{ route('admin.dishes.store') }}" class="row" enctype="multipart/form-data">
             @csrf
 
             <div class="col-12 my-4">
@@ -50,8 +51,8 @@
                 @enderror
             </div>
 
-            {{--* CHECKBOXS per selezionare la\le Technology --}}
-           {{-- <label class="form-label">Tipologie</label>
+            {{-- CHECKBOXS per selezionare la\le Technology  --}}
+            <label class="form-label">Tipologie</label>
            <div class="form-check bg-light text-primary p-3">
                 <div class="row">
                     @foreach ($types as $type)
@@ -101,7 +102,7 @@
                 <button class="btn btn-secondary">Salva</button>
             </div>
 
-        </form> --}} --}}
+        </form> 
 
-    </div>
+  </div>
 @endsection
