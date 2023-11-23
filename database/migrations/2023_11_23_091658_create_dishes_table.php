@@ -14,7 +14,6 @@ return new class extends Migration {
     {
         Schema::create('dishes', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('restaurant_id');
             $table->string('name');
             $table->text('description');
             $table->boolean('visible')->default(true);
