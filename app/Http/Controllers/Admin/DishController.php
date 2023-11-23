@@ -82,7 +82,7 @@ class DishController extends Controller
      */
     public function show(Dish $dish)
     {
-        /*  return view('admin.dishes.show', compact('dish')); */
+        return view('admin.dishes.show', compact('dish'));
     }
 
     /**

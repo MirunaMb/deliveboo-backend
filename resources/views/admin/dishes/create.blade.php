@@ -6,9 +6,7 @@
 
         <form method="POST" action="{{ route('admin.dishes.store') }}" class="row" enctype="multipart/form-data">
             @csrf
-
-            {{-- <input type="hidden" name="restaurant_id" value="{{ $restaurantId }}"> --}}
-
+            
             <div class="col-12 my-4">
                 <label for="name" class="form-label ">Nome</label>
                 <input type="text" name="name" id="name" class="form-control @error('name') is-invalid @enderror">
