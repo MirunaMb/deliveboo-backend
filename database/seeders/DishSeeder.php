@@ -17,14 +17,12 @@ class DishSeeder extends Seeder
     public function run()
     {
         $_dishes = [
-            ['name' => 'ristorante_1', 'description' => 'Linguaggio di markup strutturale.', 'visible' => true, 'image' => '', 'price' => 12, 40],
-            ['name' => 'ristorante_2', 'description' => 'Foglio di stile per presentazione.', 'visible' => true, 'image' => '', 'price' => 20, 21],
-            ['name' => 'ristorante_3', 'description' => 'Linguaggio di scripting client-side.', 'visible' => true, 'image' => '', 'price' => 30, 00],
-            ['name' => 'ristorante_4', 'description' => 'Framework JavaScript per interfacce utente.', 'visible' => true, 'image' => '', 'price' => 12, 93],
-            ['name' => 'ristorante_5', 'description' => 'Linguaggio di scripting server-side.', 'visible' => true, 'image' => '', 'price' => 7, 50],
+            ['name' => 'ristorante_1', 'description' => 'Linguaggio di markup strutturale.', 'visible' => true, 'image' => '', 'price' => 12.40],
+            ['name' => 'ristorante_2', 'description' => 'Foglio di stile per presentazione.', 'visible' => true, 'image' => '', 'price' => 20.21],
+            ['name' => 'ristorante_3', 'description' => 'Linguaggio di scripting client-side.', 'visible' => true, 'image' => '', 'price' => 30.00],
+            ['name' => 'ristorante_4', 'description' => 'Framework JavaScript per interfacce utente.', 'visible' => true, 'image' => '', 'price' => 12.93],
+            ['name' => 'ristorante_5', 'description' => 'Linguaggio di scripting server-side.', 'visible' => true, 'image' => '', 'price' => 7.50],
         ];
-
-
 
         foreach ($_dishes as $_dish) {
             $dish = new Dish();
@@ -33,6 +31,7 @@ class DishSeeder extends Seeder
             $dish->visible = $_dish['visible'];
             $dish->image = $_dish['image'];
             $dish->price = $_dish['price'];
+            $dish->save();
         }
     }
 }

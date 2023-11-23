@@ -19,6 +19,7 @@ return new class extends Migration {
             $table->boolean('visible')->default(true);
             $table->string('image');
             $table->decimal('price');
+            $table->timestamps();
         });
     }
 
