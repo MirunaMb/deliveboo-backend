@@ -4,7 +4,7 @@
     <div class="container">
 
 
-        {{-- <form method="POST" action="{{ route('admin.dishes.store') }}" class="row" enctype="multipart/form-data">
+       <form method="POST" action="{{ route('admin.dishes.store') }}" class="row" enctype="multipart/form-data">
             @csrf
             
             <div class="col-12 my-4">
@@ -46,7 +46,7 @@
                 @error('image')
                     <div class="invalid-feedback">
                         {{ $message }}
-                    </div>
+                    </div> 
                 @enderror
             </div>
 

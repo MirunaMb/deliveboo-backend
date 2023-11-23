@@ -149,6 +149,7 @@ class DishController extends Controller
                 'description' => 'required',
                 'price' => 'required',
                 'image' => 'nullable|image|max:1024',
+                'visible' => 'nullable|boolean',
                 'restaurant_id' => 'nullable|exists:restaurants,id'
 
             ],
@@ -163,7 +164,6 @@ class DishController extends Controller
 
                 'image.max' => 'L\'immagine non può superare i 1024KB',
 
-                
 
             ]
         )->validate();
