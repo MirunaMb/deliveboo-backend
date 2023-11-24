@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\DishController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\RestaurantController;
@@ -20,4 +21,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 });
 Route::apiResource("restaurants", RestaurantController::class)->only(["index", "show"]);
-Route::get('/restaurants-by-type/{type_id}', [RestaurantController::class, 'projectsByType']);
+Route::apiResource("dishes", DishController::class)->only(["index", "show"]);
+
+Route::get('/restaurants-by-type/{type_id}', [RestaurantController::class, 'restaurantsByType']);

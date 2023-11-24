@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Storage;
 
 class Restaurant extends Model
 {
@@ -35,5 +36,10 @@ class Restaurant extends Model
     public function dishes()
     {
         return $this->hasMany(dish::class);
+    }
+
+    public function getAbsUriImage()
+    {
+        return $this->image ? Storage::url($this->image) : "";
     }
 }

@@ -26,7 +26,6 @@ class RestaurantController extends Controller
                 }
             ])
             ->get();
-        dd($restaurants);
         return response()->json($restaurants);
     }
 
@@ -53,10 +52,6 @@ class RestaurantController extends Controller
             ->where('id', $id)
             ->with([
                 'types:id,label',
-                'dishes' => function ($query) {
-                    $query->select("id", "restaurant_id", "name", "description", "price", "image")
-                        ->where('visible', 1);
-                }
             ])
             ->first();
         return response()->json($restaurant);
@@ -84,4 +79,15 @@ class RestaurantController extends Controller
     {
         //
     }
+    public function restaurantsByType($type_id)
+    {
+        $restaurants = Restaurant::select("id", "user_id", "name", "description", "address", "phone_number", "vat", "image")
+            ->where("type_id", $type_id)
+            ->with('type:id,label')
+            ->orderByDesc('id')
+            ->get();
+
+        return response()->json($restaurants);
+    }
+
 }
