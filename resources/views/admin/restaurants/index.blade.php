@@ -20,9 +20,6 @@
                 </tr>
             </thead>
             <tbody>
-
-
-                {{-- @forelse ($restaurants as $restaurant) --}}
                 <tr>
                     <th scope="row">{{ $restaurant->id }}</th>
                     <td>{{ $restaurant->name }}</td>
@@ -34,34 +31,20 @@
                             <i class="fa-solid fa-pen-to-square"></i>
                         </a>
                     </td>
-
                     <td>
                         <a href="{{ route('admin.restaurant.show', $restaurant) }}" class="mx-1">
                             <i class="fa-solid fa-eye"></i>
                         </a>
                     </td>
-                        
-                        {{-- <td>
-                            <a href="javascript:void(0)" class="mx-2 text-danger" data-bs-toggle="modal"
-                                data-bs-target="#deleteModal-{{ $project->id }}">
-                                <i class="fa-solid
-                                fa-trash"></i>
-                            </a>
-                        </td>  --}}
                 </tr>
-
-                {{-- @empty
-                    <td colspan="6"><i>Non ci sono risultati</i></td> --}}
-                {{-- @endforelse --}}
             </tbody>
         </table>
-        <a href="{{ route('admin.dishes.index')}}" class="btn btn-warning">
-           I miei piatti
+        <a href="{{ route('admin.dishes.index') }}" class="btn btn-primary">
+            I miei piatti 🍜
         </a>
         <div class="mt-5">
             <h5>Descrizione Ristorante</h5>
-            <p>{{$restaurant->description}}</p>
+            <p>{{ $restaurant->description }}</p>
         </div>
     </div>
 @endsection
-

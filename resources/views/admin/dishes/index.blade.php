@@ -8,7 +8,7 @@
 
 @section('content')
     <div class="container">
-        <h1>i miei piatti</h1>
+        <h1>Piatti del Ristorante</h1>
         <table class="table">
             <thead>
                 <tr>
@@ -26,7 +26,6 @@
                 </tr>
             </thead>
             <tbody>
-
                 @foreach ($dishes as $dish)
                     <tr>
                         <td>{{ $dish->id }}</td>
@@ -52,6 +51,7 @@
                                 data-bs-target="#delete-modal-{{ $dish->id }}">
                                 <i class="fa-solid fa-trash-arrow-up fa-xl text-danger"></i>
                             </a>
+
                             {{-- * MODAL per il delete del piatto --}}
                             <div class="modal fade" id="delete-modal-{{ $dish->id }}" tabindex="-1"
                                 aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -82,6 +82,7 @@
                                 </div>
                             </div>
                         </td>
+                        {{-- * SWITCH per la visibilità dei piatti --}}
                         <td>
                             <label class="switch">
                                 <input type="checkbox" name="visible" @if ($dish->visible) checked @endif>
@@ -92,6 +93,7 @@
                 @endforeach
             </tbody>
         </table>
+
         <a href="{{ route('admin.dishes.create') }}" class="btn btn-primary">
             + Crea nuovo piatto
         </a>
