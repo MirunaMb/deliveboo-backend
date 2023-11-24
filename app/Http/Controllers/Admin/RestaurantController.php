@@ -15,9 +15,8 @@ use App\Models\Type;
 
 class RestaurantController extends Controller
 {
-    /**
+    /*
      * Display a listing of the resource.
-     *
      */
     public function index()
     {
@@ -40,13 +39,13 @@ class RestaurantController extends Controller
         }
     }
 
-    /**
+    /*
      * Show the form for creating a new resource.
-     *
      */
     public function create()
     {
         $user = Auth::user();
+
         $types = Type::orderBy('label')->get();
 
         if ($user->restaurant) {
@@ -56,23 +55,24 @@ class RestaurantController extends Controller
         return view('admin.restaurants.create', compact('types'));
     }
 
-    /**
+    /*
      * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
      */
     public function store(Request $request)
     {
         $data = $this->validation($request->all());
 
         $restaurant = new Restaurant();
+
         $restaurant->name = $data['name'];
         $restaurant->description = $data['description'];
         $restaurant->address = $data['address'];
         $restaurant->phone_number = $data['phone_number'];
         $restaurant->vat = $data['vat'];
+
         // autentificazione attraverso AUTH-> collega la tabella ristorante con user_id
         $restaurant->user_id = Auth::id();
+
         if ($request->hasFile('image')) {
             $image_path = Storage::put('uploads/restaurants/image', $data['image']);
             $restaurant->image = $image_path;
@@ -88,20 +88,16 @@ class RestaurantController extends Controller
 
     }
 
-    /**
+    /*
      * Display the specified resource.
-     *
-     * @param  int  $id
      */
     public function show(Restaurant $restaurant)
     {
         return view('admin.restaurants.show', compact('restaurant'));
     }
 
-    /**
+    /*
      * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
      */
     public function edit(Restaurant $restaurant)
     {
@@ -112,16 +108,14 @@ class RestaurantController extends Controller
         return view('admin.restaurants.edit', compact('restaurant', 'types', 'restaurant_types'));
     }
 
-    /**
+    /*
      * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
      */
     public function update(Request $request, Restaurant $restaurant)
     {
         // FUNZIONA !
         $data = $this->validation($request->all());
+
         if ($request->hasFile('image')) {
             if ($restaurant->image) {
                 Storage::delete($restaurant->image);
@@ -129,20 +123,21 @@ class RestaurantController extends Controller
             $image_path = Storage::put('uploads/restaurants/image', $data['image']);
             $restaurant->image = $image_path;
         }
+
         $restaurant->save();
 
-        if (Arr::exists($data, "types"))
+        if (Arr::exists($data, "types")) {
             $restaurant->types()->sync($data["types"]);
-        else
+        } else {
             $restaurant->types()->detach();
+        }
 
+        /* $restaurant->update($data); */
         return redirect()->route('admin.restaurant.show', $restaurant);
     }
 
-    /**
+    /*
      * Remove the specified resource from storage.
-     *
-     * @param  int  $id
      */
     public function destroy(Restaurant $restaurant)
     {
@@ -184,14 +179,12 @@ class RestaurantController extends Controller
                 'description.required' => 'La descrizione è obbligatorio',
 
                 // DA GESTIRE QUANDO INSERIAMO IMAGE
-                'image.image' => 'L\'immagine',
-                // 'image.max' => 'La partita IVA deve contenere un massimo di 50 caratteri',
-
-
+                'image.image' => 'Il file deve essere un immagine (jpg, jpeg, png, ecc)',
+                'image.max' => 'L\'immagine deve essere di max 1024kb'
             ]
         )->validate();
-        return $validator;
 
+        return $validator;
     }
 }
 

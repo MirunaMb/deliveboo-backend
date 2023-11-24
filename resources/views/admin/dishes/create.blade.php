@@ -3,16 +3,18 @@
 @section('content')
     <div class="container">
         <div class="container mt-2">
-            <a href="{{ route('admin.dishes.index') }}" class="btn btn-primary">
-                <- Torna alla tabella </a>
+            <a href="{{ route('admin.dishes.index') }}" class="btn btn-danger">
+                Torna alla tabella </a>
         </div>
+
+        {{-- * FORM CREATE RISTORANTE --}}
         <form method="POST" action="{{ route('admin.dishes.store') }}" class="row" enctype="multipart/form-data">
             @csrf
 
             <div class="col-12 my-4">
                 <label for="name" class="form-label ">Nome</label>
-                <input type="text" name="name" id="name"
-                    class="form-control @error('name') is-invalid @enderror">
+                <input type="text" name="name" id="name" class="form-control @error('name') is-invalid @enderror"
+                    required>
                 @error('name')
                     <div class="invalid-feedback">
                         {{ $message }}
@@ -54,7 +56,7 @@
             </div>
 
             {{-- * CHECKBOXS per selezionare la\le Technology --}}
-            <label class="form-label">Tipologie</label>
+            <label class="form-label">Disponibilità</label>
             <div class="form-check bg-light text-primary p-3">
                 <label for="visible">Disponibile</label>
                 <input type="checkbox" id="visible" name="visible" value="1">
