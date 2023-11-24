@@ -79,13 +79,21 @@ class RestaurantController extends Controller
     {
         //
     }
-    public function restaurantsByType($type_id)
+    public function restaurantsByTypes(Request $request)
     {
-        $restaurants = Restaurant::select("id", "user_id", "name", "description", "address", "phone_number", "vat", "image")
-            ->where("type_id", $type_id)
-            ->with('type:id,label')
-            ->orderByDesc('id')
-            ->get();
+
+        $filters = $request->all();
+
+        $restaurants_query = Restaurant::select("id", "user_id", "name", "description", "address", "phone_number", "vat", "image")
+            ->with('types:id,label')
+            ->orderByDesc('id');
+
+        if (!empty($filters['activeTypes'])) {
+            $restaurants_query->whereHas('types', function ($query) use ($filters) {
+                $query->whereIn('id', $filters['activeTypes']);
+            });
+        }
+        $restaurants = $restaurants_query->get();
 
         return response()->json($restaurants);
     }
