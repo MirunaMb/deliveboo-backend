@@ -89,6 +89,8 @@ class DishController extends Controller
     {
         $data = $this->validation($request->all());
 
+        $dish->update($data);
+
         $dish->visible = Arr::get($data, 'visible', false);
 
         if ($request->hasFile('image')) {
@@ -97,13 +99,14 @@ class DishController extends Controller
             }
             $image_path = Storage::put('uploads/dishes/image', $data['image']);
             $dish->image = $image_path;
+            $dish->save();
         }
 
-        $dish->save();
+        /* $dish->save(); */
 
         $dish = Dish::findOrFail($dish->id);
 
-        $dish->update($data);
+        /*  $dish->update($data); */
 
         return redirect()->route('admin.dishes.show', $dish->id);
     }
