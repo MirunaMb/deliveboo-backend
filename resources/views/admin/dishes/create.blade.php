@@ -7,13 +7,17 @@
                 Torna alla tabella </a>
         </div>
 
+        <span class=""><em>I campi obbligatori sono contrassegnati con *</em> </span>
+
+
         {{-- * FORM CREATE RISTORANTE --}}
         <form method="POST" action="{{ route('admin.dishes.store') }}" class="row" enctype="multipart/form-data">
             @csrf
 
             <div class="col-12 my-4">
-                <label for="name" class="form-label ">Nome</label>
+                <label for="name" class="form-label ">Nome*</label>
                 <input type="text" name="name" id="name" class="form-control @error('name') is-invalid @enderror"
+                    value="{{ old('name') }}"
                     required>
                 @error('name')
                     <div class="invalid-feedback">
@@ -24,20 +28,22 @@
 
 
             <div class="col-12 mb-4">
-                <label for="description" class="form-label">Descrizione</label>
+                <label for="description" class="form-label">Descrizione*</label>
                 <textarea name="description" id="description" class="form-control @error('description') is-invalid @enderror"
-                    rows="5"></textarea>
+                    rows="5">{{ old('description') }}</textarea>
                 @error('description')
                     <div class="invalid-feedback">
                         {{ $message }}
                     </div>
                 @enderror
             </div>
+            
 
             <div class="col-12 my-4">
-                <label for="price" class="form-label ">Prezzo</label>
+                <label for="price" class="form-label ">Prezzo*</label>
                 <input type="number" name="price" id="price" pattern="[0-9]+([\.,])[0-9]+?" step="0.01"
-                    class="form-control @error('price') is-invalid @enderror">
+                    class="form-control @error('price') is-invalid @enderror"
+                    value="{{ old('price') }}">
                 @error('price')
                     <div class="invalid-feedback">
                         {{ $message }}
