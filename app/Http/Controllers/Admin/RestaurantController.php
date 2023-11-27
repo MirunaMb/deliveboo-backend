@@ -161,7 +161,7 @@ class RestaurantController extends Controller
                 'name' => 'required|string|max:50',
                 'address' => 'required|string|max:50',
                 'phone_number' => 'required|string|max:50',
-                'vat' => 'required|string|max:50',
+                'vat' => 'required|unique:restaurants,vat|string|max:50',
                 'types' => 'required',
                 'description' => 'required',
                 'image' => 'nullable|image|max:1024'
@@ -180,6 +180,7 @@ class RestaurantController extends Controller
                 'phone_number.max' => 'Il numero di telefono deve contenere un massimo di 50 caratteri',
 
                 'vat.required' => 'La partita IVA è obbligatorio',
+                'vat.unique' => 'La partita IVA deve essere unica',
                 'vat.string' => 'La partita IVA è una stringa',
                 'vat.max' => 'La partita IVA deve contenere un massimo di 50 caratteri',
 
