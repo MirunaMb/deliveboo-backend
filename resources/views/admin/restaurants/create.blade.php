@@ -3,13 +3,14 @@
 @section('content')
     <div class="container">
 
+        <span class=""><em>I campi obbligatori sono contrassegnati con *</em> </span>
 
         <form method="POST" action="{{ route('admin.restaurant.store') }}" class="row" enctype="multipart/form-data">
             @csrf
 
             <div class="col-12 my-4">
-                <label for="name" class="form-label ">Nome</label>
-                <input type="text" name="name" id="name" class="form-control @error('name') is-invalid @enderror">
+                <label for="name" class="form-label ">Nome*</label>
+                <input type="text" name="name" id="name" class="form-control @error('name') is-invalid @enderror" value="{{ old('name') }}">
                 @error('name')
                     <div class="invalid-feedback">
                         {{ $message }}
@@ -19,9 +20,9 @@
 
 
             <div class="col-12 my-4">
-                <label for="address" class="form-label ">Indirizzo</label>
+                <label for="address" class="form-label ">Indirizzo*</label>
                 <input type="text" name="address" id="address"
-                    class="form-control @error('address') is-invalid @enderror">
+                    class="form-control @error('address') is-invalid @enderror" value="{{ old('address') }}">
                 @error('address')
                     <div class="invalid-feedback">
                         {{ $message }}
@@ -30,9 +31,9 @@
             </div>
 
             <div class="col-12 my-4">
-                <label for="phone_number" class="form-label ">Numero di Telefono</label>
+                <label for="phone_number" class="form-label ">Numero di Telefono*</label>
                 <input type="text" name="phone_number" id="phone_number"
-                    class="form-control @error('phone_number') is-invalid @enderror">
+                    class="form-control @error('phone_number') is-invalid @enderror" value="{{ old('phone_number') }}">
                 @error('phone_number')
                     <div class="invalid-feedback">
                         {{ $message }}
@@ -41,8 +42,8 @@
             </div>
 
             <div class="col-12 my-4">
-                <label for="vat" class="form-label ">PIVA</label>
-                <input type="text" name="vat" id="vat" class="form-control @error('vat') is-invalid @enderror">
+                <label for="vat" class="form-label ">PIVA*</label>
+                <input type="text" name="vat" id="vat" class="form-control @error('vat') is-invalid @enderror" value="{{ old('vat') }}">
                 @error('vat')
                     <div class="invalid-feedback">
                         {{ $message }}
@@ -50,8 +51,8 @@
                 @enderror
             </div>
 
-            {{-- * CHECKBOXS per selezionare la\le Technology --}}
-            <label class="form-label">Tipologie</label>
+            {{-- * CHECKBOXS per selezionare i tipi --}}
+            <label class="form-label">Tipologie*</label>
             <div class="form-check bg-light text-primary p-3">
                 <div class="row">
                     @foreach ($types as $type)
@@ -72,8 +73,9 @@
             @enderror
 
             <div class="col-12 mb-4">
-                <label for="description" class="form-label">Descrizione</label>
+                <label for="description" class="form-label">Descrizione*</label>
                 <textarea name="description" id="description" class="form-control @error('description') is-invalid @enderror"
+                    value="{{ old('description') }}"
                     rows="5"></textarea>
                 @error('description')
                     <div class="invalid-feedback">
