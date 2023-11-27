@@ -135,7 +135,7 @@ class DishController extends Controller
             [
                 'name' => 'required|string|max:50',
                 'description' => 'required',
-                'price' => 'required',
+                'price' => 'required|numeric|min:0',
                 'image' => 'nullable|image|max:1024',
                 'visible' => 'nullable|boolean',
                 'restaurant_id' => 'nullable|exists:restaurants,id'
@@ -148,6 +148,7 @@ class DishController extends Controller
                 'description.required' => 'La descrizione è obbligatorio',
 
                 'price.required' => 'Il prezzo è obbligatorio',
+                'price.min' => 'Il prezzo deve essere maggiore di 0',
 
                 'image.max' => 'L\'immagine non può superare i 1024KB',
                 'image.image' => 'Il file deve essere un immagine (jpg, jpeg, png, ecc)',
