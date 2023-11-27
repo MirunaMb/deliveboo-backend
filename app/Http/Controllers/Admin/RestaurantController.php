@@ -95,7 +95,7 @@ class RestaurantController extends Controller
     {
         $user = Auth::user();
         if ($user->restaurant) {
-            abort(403, 'Non è possibile visualizzare i risotanti di altri ristoratori');
+            abort(403, 'Non è possibile visualizzare questo ristorante');
         }
         return view('admin.restaurants.show', compact('restaurant'));
     }
