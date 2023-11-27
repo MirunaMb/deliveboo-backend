@@ -93,10 +93,10 @@ class RestaurantController extends Controller
      */
     public function show(Restaurant $restaurant)
     {
-        $user = Auth::user();
-        if ($user->restaurant) {
-            abort(403, 'Non è possibile visualizzare questo ristorante');
+        if ($restaurant->user_id != Auth::id()) {
+            abort(403, 'Non hai il permesso di modificare questo ristorante.');
         }
+
         return view('admin.restaurants.show', compact('restaurant'));
     }
 
