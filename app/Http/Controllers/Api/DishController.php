@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 use App\Models\Dish;
+use App\Models\Restaurant;
 
 class DishController extends Controller
 {
@@ -20,6 +21,17 @@ class DishController extends Controller
             ->get();
         return response()->json($dishes);
     }
+
+    public function dishesByRestaurant($restaurantId)
+{
+    // Logica per ottenere i piatti di un ristorante specifico
+    // Assicurati di restituire i dati in un formato JSON
+
+    $dishes = Dish::where('restaurant_id', $restaurantId)->get();
+
+    return response()->json($dishes);
+}
+
 
     /*
      * Store a newly created resource in storage.
