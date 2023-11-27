@@ -17,7 +17,7 @@
                     </div>
                     @endif
 
-                    {{ __('You are logged in!') }}
+                    {{ __('Benvenuto sulla piattaforma Deliveboo!') }}
                 </div>
             </div>
         </div>

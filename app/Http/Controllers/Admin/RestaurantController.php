@@ -93,6 +93,10 @@ class RestaurantController extends Controller
      */
     public function show(Restaurant $restaurant)
     {
+        $user = Auth::user();
+        if ($user->restaurant) {
+            abort(403, 'Non è possibile visualizzare i risotanti di altri ristoratori');
+        }
         return view('admin.restaurants.show', compact('restaurant'));
     }
 
@@ -101,6 +105,10 @@ class RestaurantController extends Controller
      */
     public function edit(Restaurant $restaurant)
     {
+        if ($restaurant->user_id != Auth::id()) {
+            abort(403, 'Non hai il permesso di modificare questo ristorante.');
+        }
+
         $types = Type::orderBy('label')->get();
 
         $restaurant_types = $restaurant->types->pluck('id')->toArray();
