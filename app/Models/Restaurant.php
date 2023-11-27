@@ -38,8 +38,13 @@ class Restaurant extends Model
         return $this->hasMany(dish::class);
     }
 
-    public function getAbsUriImage()
+    public function getImageAttribute($image)
     {
-        return $this->image ? Storage::url($this->image) : "";
+        return $this->getAbsUriImage($image);
+    }
+
+    public function getAbsUriImage($image)
+    {
+        return $image ? Storage::url($image) : "";
     }
 }
