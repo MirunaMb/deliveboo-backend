@@ -23,11 +23,11 @@
                 <li class="list-group-item"><strong>Nome: </strong>{{$restaurant->name}}</li>
                 <li class="list-group-item"><strong>Indirizzo: </strong>{{$restaurant->address}}</li>
                 <li class="list-group-item"><strong>Numero: </strong>{{$restaurant->phone_number}}</li>
-                <li class="list-group-item"><strong>Vat: </strong>{{$restaurant->vat}}</li>
+                <li class="list-group-item"><strong>Partita Iva</strong>{{$restaurant->vat}}</li>
                 <li class="list-group-item"><strong>Creato il: </strong>{{$restaurant->created_at}}</li>
                 <li class="list-group-item"><strong>Aggiornato il: </strong>{{$restaurant->updated_at}}</li>
                 <li class="list-group-item"><strong>Descrizione: </strong>{{$restaurant->description}}</li>
-                <li class="list-group-item"><strong>Types: </strong>
+                <li class="list-group-item"><strong>Tipo: </strong>
                     @forelse ($restaurant->types as $type)
                     <span class="badge bg-success mx-1">{{$type->label}}</span>
                     {{--  @unless($loop->last), @else . @endunless --}}

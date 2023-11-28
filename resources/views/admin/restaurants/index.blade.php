@@ -12,11 +12,12 @@
             <thead>
                 <tr>
                     <th scope="col">ID</th>
-                    <th scope="col">Name</th>
-                    <th scope="col">Address</th>
-                    <th scope="col">Phone Number</th>
-                    <th scope="col">Vat</th>
+                    <th scope="col">Nome</th>
+                    <th scope="col">Indirizzo</th>
+                    <th scope="col">Numero di cellulare</th>
+                    <th scope="col">Partita Iva</th>
                     <th scope="col">Modifica</th>
+                    <th scope="col">Mostra</th>
                 </tr>
             </thead>
             <tbody>
