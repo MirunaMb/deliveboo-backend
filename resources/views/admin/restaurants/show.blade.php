@@ -13,7 +13,7 @@
     </div>
     <div class="card mt-3 mb-3" style="width: 40rem;">
         {{-- per l'immagine nella show.. --}}
-         <img src="{{ asset('/storage/' . $restaurant->image) }}" class="card-img-top" alt="">
+         <img src="{{$restaurant->image}}" class="card-img-top" alt="">
             <div class="card-head">
                 <div><h3>🍲Il mio ristorante⛪</h3></div>
                 <div><strong>ID: {{ $restaurant->id}} </strong> </div>
