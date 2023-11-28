@@ -30,7 +30,7 @@
                     <tr>
                         <td>{{ $dish->id }}</td>
                         <td>{{ $dish->name }}</td>
-                        <td>{{ $dish->price }}</td>
+                        <td>${{ $dish->price }}</td>
                         <td>{{ $dish->visible }}</td>
                         <td>{{ $dish->description }}</td>
                         <td>{{ $dish->created_at }}</td>

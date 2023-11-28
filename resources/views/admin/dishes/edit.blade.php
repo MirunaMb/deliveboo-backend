@@ -7,15 +7,19 @@
             <a href="{{ route('admin.dishes.index') }}" class="btn btn-primary">
                 <- Torna alla tabella </a>
         </div>
+        <div class="mt-2">
+            <span><em>I campi obbligatori sono contrassegnati con *</em> </span>
+        </div>
+
 
         <form method="POST" action="{{ route('admin.dishes.update', $dish) }}" class="row" enctype="multipart/form-data">
             @csrf
             @method('PATCH')
 
             <div class="col-12 my-4">
-                <label for="name" class="form-label ">Nome</label>
+                <label for="name" class="form-label ">Nome*</label>
                 <input type="text" name="name" id="name" class="form-control @error('name') is-invalid @enderror"
-                    value="{{ old('name') ?? $dish->name }}">
+                    required value="{{ old('name') ?? $dish->name }}">
                 @error('name')
                     <div class="invalid-feedback">
                         {{ $message }}
@@ -25,9 +29,10 @@
 
 
             <div class="col-12 my-4">
-                <label for="price" class="form-label ">Prezzo</label>
+                <label for="price" class="form-label ">Prezzo*</label>
                 <input type="text" name="price" id="price"
-                    class="form-control @error('price') is-invalid @enderror" value="{{ old('price') ?? $dish->price }}">
+                    class="form-control @error('price') is-invalid @enderror" required
+                    value="{{ old('price') ?? $dish->price }}">
                 @error('price')
                     <div class="invalid-feedback">
                         {{ $message }}
@@ -40,9 +45,9 @@
 
 
             <div class="col-12 mb-4">
-                <label for="description" class="form-label">Descrizione</label>
+                <label for="description" class="form-label">Descrizione*</label>
                 <textarea name="description" id="description" class="form-control @error('description') is-invalid @enderror"
-                    rows="5" value="{{ old('description') ?? $dish->description }}">{{ old('description') ?? $dish->description }}</textarea>
+                    rows="5" required value="{{ old('description') ?? $dish->description }}">{{ old('description') ?? $dish->description }}</textarea>
                 @error('description')
                     <div class="invalid-feedback">
                         {{ $message }}
