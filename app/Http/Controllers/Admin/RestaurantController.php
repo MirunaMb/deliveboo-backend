@@ -121,8 +121,9 @@ class RestaurantController extends Controller
      */
     public function update(Request $request, Restaurant $restaurant)
     {
+        $restaurantId = $restaurant->id;
         // FUNZIONA !
-        $data = $this->validation($request->all());
+        $data = $this->validation($request->all(), $restaurantId);
 
         $restaurant->update($data);
 
@@ -153,7 +154,7 @@ class RestaurantController extends Controller
         //
     }
 
-    private function validation($data)
+    private function validation($data,$restaurantId)
     {
         $validator = Validator::make(
             $data,
@@ -161,7 +162,7 @@ class RestaurantController extends Controller
                 'name' => 'required|string|max:50',
                 'address' => 'required|string|max:50',
                 'phone_number' => 'required|string|max:15',
-                'vat' => 'required|unique:restaurants,vat|string|max:11',
+                'vat' => 'required|string|max:11|unique:restaurants,vat,' . $restaurantId,
                 'types' => 'required',
                 'description' => 'required',
                 'image' => 'nullable|image|max:1024'
