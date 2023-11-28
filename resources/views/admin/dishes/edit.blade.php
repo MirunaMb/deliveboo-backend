@@ -63,6 +63,10 @@
                         {{ $message }}
                     </div>
                 @enderror
+                <div class="col-4">
+                    <img src="" class="img-fluid"
+                    alt="" id="image_preview">
+                </div>
             </div>
 
             {{-- * CHECKBOXS per selezionare la\le Technology --}}
@@ -87,3 +91,19 @@
 
     </div>
 @endsection
+@section('scripts')
+    <script type="text/javascript">
+        const inputFileElement = document.getElementById('image');
+        const imagePreview = document.getElementById('image_preview');
+        inputFileElement.addEventListener('change', function() { //prendo l'input,intercetto il change
+            alert('Immagine Cambiata');
+            const [file] = this.files //prendo il file dentro input
+            //quando l'immagine viene cambiata crea un Array di files da dove andiamo a estrarrne un solo file 
+
+            //console.log(URL.createObjectURL(file)); //genera un blob-un formato di dati che contiene una lunga stringa di dati(che sono proprio l'immagine fisica)
+            imagePreview.src = URL.createObjectURL(
+            file); //il source di coverImagePreview e uguale al URL che creo dal file 
+        })
+    </script>
+@endsection
+
