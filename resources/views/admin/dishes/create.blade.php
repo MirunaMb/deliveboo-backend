@@ -72,7 +72,7 @@
             </div>
 
             <div class="col-12 mb-4">
-                <button type="submit" class="btn btn-success">Salva</button>
+                <button type="submit" class="btn btn-success" id="submitBtn">Salva</button>
             </div>
         </form>
     </div>
