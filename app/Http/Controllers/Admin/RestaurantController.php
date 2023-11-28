@@ -58,9 +58,10 @@ class RestaurantController extends Controller
     /*
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(Request $request, Restaurant $restaurant)
     {
-        $data = $this->validation($request->all());
+        $restaurantId = $restaurant->id;
+        $data = $this->validation($request->all(), $restaurantId);
 
         $restaurant = new Restaurant();
 
@@ -154,7 +155,7 @@ class RestaurantController extends Controller
         //
     }
 
-    private function validation($data,$restaurantId)
+    private function validation($data, $restaurantId)
     {
         $validator = Validator::make(
             $data,
