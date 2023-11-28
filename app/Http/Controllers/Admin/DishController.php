@@ -70,7 +70,7 @@ class DishController extends Controller
     public function show(Dish $dish)
     {
         if (auth()->user()->id !== $dish->restaurant->user_id) {
-            abort(403, 'Non è possibile visualizzare questo piatto.');
+            abort(404, 'NOT FOUND');
         }
         return view('admin.dishes.show', compact('dish'));
     }
@@ -82,7 +82,7 @@ class DishController extends Controller
     {
         $restaurants = Restaurant::all();
         if (auth()->user()->id !== $dish->restaurant->user_id) {
-            abort(403, 'Non è possibile modificare questo piatto.');
+            abort(404, 'NOT FOUND');
         }
         return view('admin.dishes.edit', compact('restaurants', 'dish'));
     }

@@ -49,7 +49,7 @@ class RestaurantController extends Controller
         $types = Type::orderBy('label')->get();
 
         if ($user->restaurant) {
-            abort(403, 'Non è possibile creare un nuovo ristorante');
+            abort(404, 'NOT FOUND');
         }
 
         return view('admin.restaurants.create', compact('types'));
@@ -95,7 +95,7 @@ class RestaurantController extends Controller
     public function show(Restaurant $restaurant)
     {
         if ($restaurant->user_id != Auth::id()) {
-            abort(403, 'Non hai il permesso di modificare questo ristorante.');
+            abort(404, 'NOT FOUND');
         }
 
         return view('admin.restaurants.show', compact('restaurant'));
@@ -107,7 +107,7 @@ class RestaurantController extends Controller
     public function edit(Restaurant $restaurant)
     {
         if ($restaurant->user_id != Auth::id()) {
-            abort(403, 'Non hai il permesso di modificare questo ristorante.');
+            abort(404, 'NOT FOUND');
         }
 
         $types = Type::orderBy('label')->get();
