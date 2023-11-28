@@ -13,15 +13,15 @@
             <thead>
                 <tr>
                     <th scope="col">ID</th>
-                    <th scope="col">Name</th>
-                    <th scope="col">prezzo</th>
-                    <th scope="col">visible</th>
+                    <th scope="col">Nome</th>
+                    <th scope="col">Prezzo</th>
+                    <th scope="col">Visibilità</th>
                     <th scope="col">Descrizione</th>
-                    <th scope="col">creato</th>
-                    <th scope="col">update</th>
-                    <th scope="col">edit</th>
-                    <th scope="col">show</th>
-                    <th scope="col">delete</th>
+                    <th scope="col">Data creazione</th>
+                    <th scope="col">Ultimo aggiornamento</th>
+                    <th scope="col">Edita</th>
+                    <th scope="col">Mostra</th>
+                    <th scope="col">Cancella</th>
                     <th scope="col">Visibilità</th>
                 </tr>
             </thead>
