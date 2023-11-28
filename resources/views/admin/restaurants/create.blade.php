@@ -10,7 +10,7 @@
 
             <div class="col-12 my-4">
                 <label for="name" class="form-label ">Nome*</label>
-                <input type="text" name="name" id="name" class="form-control @error('name') is-invalid @enderror" value="{{ old('name') }}">
+                <input type="text" name="name" id="name" class="form-control @error('name') is-invalid @enderror" required value="{{ old('name') }}" >
                 @error('name')
                     <div class="invalid-feedback">
                         {{ $message }}
@@ -22,7 +22,7 @@
             <div class="col-12 my-4">
                 <label for="address" class="form-label ">Indirizzo*</label>
                 <input type="text" name="address" id="address"
-                    class="form-control @error('address') is-invalid @enderror" value="{{ old('address') }}">
+                    class="form-control @error('address') is-invalid @enderror" required value="{{ old('address') }}">
                 @error('address')
                     <div class="invalid-feedback">
                         {{ $message }}
@@ -33,7 +33,7 @@
             <div class="col-12 my-4">
                 <label for="phone_number" class="form-label ">Numero di Telefono*</label>
                 <input type="text" name="phone_number" id="phone_number"
-                    class="form-control @error('phone_number') is-invalid @enderror" value="{{ old('phone_number') }}">
+                    class="form-control @error('phone_number') is-invalid @enderror" required value="{{ old('phone_number') }}">
                 @error('phone_number')
                     <div class="invalid-feedback">
                         {{ $message }}
@@ -43,7 +43,7 @@
 
             <div class="col-12 my-4">
                 <label for="vat" class="form-label ">PIVA*</label>
-                <input type="text" name="vat" id="vat" class="form-control @error('vat') is-invalid @enderror" value="{{ old('vat') }}">
+                <input type="text" name="vat" id="vat" class="form-control @error('vat') is-invalid @enderror" required value="{{ old('vat') }}">
                 @error('vat')
                     <div class="invalid-feedback">
                         {{ $message }}
@@ -74,7 +74,7 @@
 
             <div class="col-12 mb-4">
                 <label for="description" class="form-label">Descrizione*</label>
-                <textarea name="description" id="description" class="form-control @error('description') is-invalid @enderror"
+                <textarea name="description" id="description" class="form-control @error('description') is-invalid @enderror" required
                     rows="5">{{ old('description') }}</textarea>
                 @error('description')
                     <div class="invalid-feedback">
