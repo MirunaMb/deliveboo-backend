@@ -63,7 +63,7 @@
 
                 <div class="col-4">
                     @if ($dish->image)
-                        <img src="{{ asset($dish->image) }}" class="img-fluid" alt="Anteprima dell'immagine"
+                        <img src="{{ asset('storage/' . $dish->image) }}" class="img-fluid" alt="Anteprima dell'immagine"
                             id="image_preview">
                     @endif
                 </div>
@@ -92,26 +92,7 @@
     </div>
 @endsection
 @section('scripts')
-    <script>
-        // Attendi che il documento HTML sia completamente caricato prima di eseguire lo script
-        document.addEventListener("DOMContentLoaded", function() {
-            // Seleziona tutte le checkbox con il nome "types[]"
-            let checkboxes = document.querySelectorAll('input[name="types[]"]');
-            // Itera su ogni checkbox
-            checkboxes.forEach(function(checkbox) {
-                // Aggiungi un listener per l'evento di cambio (quando la checkbox viene selezionata/deselezionata)
-                checkbox.addEventListener('change', function() {
-                    // Seleziona tutte le checkbox "types[]" che sono attualmente selezionate
-                    let checkedCheckboxes = document.querySelectorAll(
-                        'input[name="types[]"]:checked');
-                    // Imposta l'attributo "required" solo se nessuna checkbox è selezionata
-                    checkboxes.forEach(function(cb) {
-                        cb.required = (checkedCheckboxes.length === 0);
-                    });
-                });
-            });
-        });
-    </script>
+    
     <script type="text/javascript">
         const inputFileElement = document.getElementById('image');
         const imagePreview = document.getElementById('image_preview');
