@@ -66,7 +66,7 @@
                 <div class="row">
                     @foreach ($types as $type)
                         <div class="col-3 mb-3">
-                            <input type="checkbox" id="type-{{ $type->id }}" required value="{{ $type->id }}"
+                            <input type="checkbox" id="type-{{ $type->id }}" value="{{ $type->id }}"
                                 name="types[]" class="form-check-control" @if (in_array($type->id, old('types', $restaurant_types ?? []))) checked @endif>
                             <label for="type-{{ $type->id }}">
                                 {{ $type->label }}
@@ -75,6 +75,8 @@
                     @endforeach
                 </div>
             </div>
+           
+
             @error('types')
                 <div class="invalid-feedback">
                     {{ $message }}
@@ -94,16 +96,15 @@
 
 
             <!-- Anteprima dell'immagine esistente -->
-            
+
             <div class="col-12 mb-4">
                 <label for="image" class="form-label">Carica immagine</label>
                 <input type="file" class="form-control" id="image" name="image">
 
                 <div class="col-4">
                     @if ($restaurant->image)
-                        <img src="{{ asset($restaurant->image) }}" class="img-fluid"
-                            alt="Anteprima dell'immagine" id="image_preview">
-
+                        <img src="{{ asset($restaurant->image) }}" class="img-fluid" alt="Anteprima dell'immagine"
+                            id="image_preview">
                     @endif
                 </div>
             </div>
@@ -151,6 +152,5 @@
             imagePreview.src = URL.createObjectURL(
                 file); //il source di coverImagePreview e uguale al URL che creo dal file 
         })
-
     </script>
 @endsection
