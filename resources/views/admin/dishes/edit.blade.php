@@ -55,17 +55,17 @@
                 @enderror
             </div>
 
+            <!-- Anteprima dell'immagine esistente -->
+
             <div class="col-12 mb-4">
                 <label for="image" class="form-label">Carica immagine</label>
-                <input type="file" class="form-control" id="image" value="{{ old('image') }}" name="image">
-                @error('image')
-                    <div class="invalid-feedback">
-                        {{ $message }}
-                    </div>
-                @enderror
+                <input type="file" class="form-control" id="image" name="image">
+
                 <div class="col-4">
-                    <img src="" class="img-fluid"
-                    alt="" id="image_preview">
+                    @if ($dish->image)
+                        <img src="{{ asset('storage/' . $dish->image) }}" class="img-fluid" alt="Anteprima dell'immagine"
+                            id="image_preview">
+                    @endif
                 </div>
             </div>
 
@@ -92,6 +92,7 @@
     </div>
 @endsection
 @section('scripts')
+    
     <script type="text/javascript">
         const inputFileElement = document.getElementById('image');
         const imagePreview = document.getElementById('image_preview');
@@ -102,8 +103,7 @@
 
             //console.log(URL.createObjectURL(file)); //genera un blob-un formato di dati che contiene una lunga stringa di dati(che sono proprio l'immagine fisica)
             imagePreview.src = URL.createObjectURL(
-            file); //il source di coverImagePreview e uguale al URL che creo dal file 
+                file); //il source di coverImagePreview e uguale al URL che creo dal file 
         })
     </script>
 @endsection
-
