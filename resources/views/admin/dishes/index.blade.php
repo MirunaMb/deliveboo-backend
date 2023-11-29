@@ -84,10 +84,16 @@
                         </td>
                         {{-- * SWITCH per la visibilità dei piatti --}}
                         <td>
-                            <label class="switch">
-                                <input type="checkbox" name="visible" @if ($dish->visible) checked @endif>
-                                <span class="slider round checkbox-visible" data-id="{{ $dish->id }}"></span>
-                            </label>
+                            <form action="{{ route('admin.dishes.visible', $dish) }}"method="POST" 
+                                id="form-visible-{{$dish->id }}">
+                                @method('PATCH')
+                                @csrf
+
+                                <label class="switch">
+                                    <input type="checkbox" name="visible" @if ($dish->visible) checked @endif>
+                                    <span class="slider round checkbox-visible" data-id="{{ $dish->id }}"></span>
+                                </label>
+                            </form>
                         </td>
                     </tr>
                 @endforeach
@@ -98,4 +104,18 @@
             + Crea nuovo piatto
         </a>
     </div>
+@endsection
+
+@section('scripts')
+<script>
+    const checkboxesVisible = document. getElementsByClassName('checkbox-visible');
+    for (checkbox of checkboxesVisible) {
+        checkbox.addEventListener('click', function() {
+            const idDish = this.getAttribute('data-id');
+            console.log(idDish);
+            const form = document.getElementById('form-visible-' + idDish);
+            form.submit();
+        })
+    }
+</script>
 @endsection
