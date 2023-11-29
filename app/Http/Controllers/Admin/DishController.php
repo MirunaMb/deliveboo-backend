@@ -128,6 +128,14 @@ class DishController extends Controller
         return redirect()->route('admin.dishes.index');
     }
 
+    public function visible(Dish $dish, Request $request) {
+        $data = $request->all();
+        $dish->visible = !Arr::exists($data, 'visible') ? 1 : null;
+        $dish->save();
+
+        return redirect()->back();
+    }
+
     private function validation($data)
     {
         $validator = Validator::make(
