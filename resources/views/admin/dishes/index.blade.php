@@ -7,22 +7,23 @@
 @endsection
 
 @section('content')
-    <div class="container">
-        <h1>Piatti del Ristorante</h1>
-        <table class="table">
+    <div class="container-tb p-5">
+        <div class="table-wrapper">
+            <h1 class="dishes-title">I MIEI PIATTI</h1>
+        <table class="fl-table">
             <thead>
                 <tr>
                     
                     <th scope="col">Piatto</th>
                     <th scope="col">Prezzo</th>
-                    <th scope="col">Visibilità</th>
                     <th scope="col">Descrizione</th>
                     <th scope="col">Data creazione</th>
                     <th scope="col">Ultimo aggiornamento</th>
-                    <th scope="col">Edita</th>
+                    <th scope="col">Modifica</th>
                     <th scope="col">Mostra</th>
                     <th scope="col">Cancella</th>
                     <th scope="col">Disponibile nel menù</th>
+                    <th scope="col">Cambia la Disponibilità</th>
                 </tr>
             </thead>
             <tbody>
@@ -31,34 +32,33 @@
                         
                         <td>{{ $dish->name }}</td>
                         <td>${{ $dish->price }}</td>
-                        <td>{{ $dish->visible }}</td>
                         <td>{{ $dish->description }}</td>
                         <td>{{ $dish->updated_at->formatLocalized('%e %B %Y') }}</td>
                         <td>{{ $dish->updated_at->formatLocalized('%e %B %Y') }}</td>
                         
-
+                        
                         <td>
-                            <a href="{{ route('admin.dishes.edit', $dish) }}" class="mx-1">
+                            <a href="{{ route('admin.dishes.edit', $dish) }}" class="mx-1 text-success fs-5 text">
                                 <i class="fa-solid fa-pen-to-square"></i>
                             </a>
                         </td>
-
+                        
                         <td>
-                            <a href="{{ route('admin.dishes.show', $dish) }}" class="mx-1">
+                            <a href="{{ route('admin.dishes.show', $dish) }}" class="mx-1 text-success fs-5 text">
                                 <i class="fa-solid fa-eye"></i>
                             </a>
                         </td>
                         <td>
                             <a href="#" class="mx-1" data-bs-toggle="modal"
-                                data-bs-target="#delete-modal-{{ $dish->id }}">
-                                <i class="fa-solid fa-trash-arrow-up fa-xl text-danger"></i>
-                            </a>
-
-                            {{-- * MODAL per il delete del piatto --}}
-                            <div class="modal fade" id="delete-modal-{{ $dish->id }}" tabindex="-1"
-                                aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                <div class="modal-dialog">
-                                    <div class="modal-content">
+                            data-bs-target="#delete-modal-{{ $dish->id }}">
+                            <i class="fa-solid fa-trash-arrow-up fa-xl text-danger fs-5 text"></i>
+                        </a>
+                        
+                        {{-- * MODAL per il delete del piatto --}}
+                        <div class="modal fade" id="delete-modal-{{ $dish->id }}" tabindex="-1"
+                            aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
                                         <div class="modal-header">
                                             <h1 class="modal-title fs-5" id="exampleModalLabel">Elimina Piatto</h1>
                                             <button type="button" class="btn-close" data-bs-dismiss="modal"
@@ -66,14 +66,14 @@
                                         </div>
                                         <div class="modal-body">
                                             Do you want to delete "<strong>{{ $dish->title }}</strong>"? Click <span
-                                                class="text-danger">"Delete"</span> to continue or go <span
-                                                class="text-primary">"Back"</span> to dishes.
+                                            class="text-danger">"Delete"</span> to continue or go <span
+                                            class="text-primary">"Back"</span> to dishes.
                                         </div>
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-primary"
                                                 data-bs-dismiss="modal">Back</button>
-
-                                            <form action="{{ route('admin.dishes.destroy', $dish) }}" method="POST"
+                                                
+                                                <form action="{{ route('admin.dishes.destroy', $dish) }}" method="POST"
                                                 class="mx-2">
                                                 @csrf
                                                 @method('DELETE')
@@ -85,6 +85,7 @@
                             </div>
                         </td>
                         {{-- * SWITCH per la visibilità dei piatti --}}
+                        <td>{{ $dish->visible ? 'Disponibile ✅' : 'Non disponibile ❌' }}</td>
                         <td>
                             <form action="{{ route('admin.dishes.visible', $dish) }}"method="POST" 
                                 id="form-visible-{{$dish->id }}">
@@ -102,9 +103,10 @@
                 @endforeach
             </tbody>
         </table>
+    </div>
 
-        <a href="{{ route('admin.dishes.create') }}" class="btn btn-primary">
-            + Crea nuovo piatto
+        <a href="{{ route('admin.dishes.create') }}" class="btn btn-danger mt-5">
+            Aggiungi un nuovo piatto 
         </a>
     </div>
 @endsection
