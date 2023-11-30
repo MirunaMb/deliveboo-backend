@@ -86,6 +86,7 @@
                         <td>
                             <form action="{{ route('admin.dishes.visible', $dish) }}"method="POST" 
                                 id="form-visible-{{$dish->id }}">
+                                {{-- per modificare il valore della colonna --}}
                                 @method('PATCH')
                                 @csrf
 
