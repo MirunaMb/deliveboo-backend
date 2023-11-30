@@ -33,7 +33,7 @@
                         <td>{{ $dish->name }}</td>
                         <td>${{ $dish->price }}</td>
                         <td>{{ $dish->description }}</td>
-                        <td>{{ $dish->updated_at->formatLocalized('%e %B %Y') }}</td>
+                        <td>{{ $dish->created_at->formatLocalized('%e %B %Y') }}</td>
                         <td>{{ $dish->updated_at->formatLocalized('%e %B %Y') }}</td>
                         
                         
