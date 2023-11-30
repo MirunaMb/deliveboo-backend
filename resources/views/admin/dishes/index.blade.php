@@ -8,7 +8,7 @@
 
 @section('content')
     <div class="container-tb p-5">
-        <div class="table-wrapper">
+        <div class="table-wrapper p-5">
             <h1 class="dishes-title">I MIEI PIATTI</h1>
         <table class="fl-table">
             <thead>
@@ -101,11 +101,11 @@
                 @endforeach
             </tbody>
         </table>
-    </div>
-
         <a href="{{ route('admin.dishes.create') }}" class="btn btn-danger mt-5">
             Aggiungi un nuovo piatto 
         </a>
+    </div>
+
     </div>
 @endsection
 

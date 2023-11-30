@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="container">
-
+        <div class="descr-edit">
         <div class="container mt-2">
             <a href="{{ route('admin.dishes.index') }}" class="btn btn-primary">
                 <- Torna alla tabella </a>
@@ -92,8 +92,8 @@
             </div>
 
         </form>
-
     </div>
+</div>
 @endsection
 @section('scripts')
     

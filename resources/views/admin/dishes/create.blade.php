@@ -2,6 +2,7 @@
 
 @section('content')
     <div class="container">
+        <div class="descr-edit">
         <div class="container mt-2">
             <a href="{{ route('admin.dishes.index') }}" class="btn btn-danger">
                 Torna alla tabella </a>
@@ -79,6 +80,7 @@
                 <button type="submit" class="btn btn-success" id="submitBtn">Salva</button>
             </div>
         </form>
+        </div>
     </div>
 @endsection
 @section('scripts')

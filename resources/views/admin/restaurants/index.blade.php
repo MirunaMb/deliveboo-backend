@@ -8,6 +8,7 @@
 
 @section('content')
     <div class="container">
+        <div class="descr-edit text-black mt-5">
         <div class="table-wrapper">
         <table class="fl-table">
             <thead>
@@ -41,13 +42,13 @@
                 </tr>
             </tbody>
         </table>
+        <a href="{{ route('admin.dishes.index') }}" class="btn btn-danger mt-5">
+            Vedi tutti i piatti 🍜
+        </a>
         </div>
 
-        <a href="{{ route('admin.dishes.index') }}" class="btn btn-danger mt-5">
-            Vai a i miei piatti 🍜
-        </a>
         
 
-        
+        </div>
     </div>
 @endsection
