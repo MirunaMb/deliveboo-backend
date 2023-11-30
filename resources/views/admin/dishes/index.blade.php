@@ -12,8 +12,8 @@
         <table class="table">
             <thead>
                 <tr>
-                    <th scope="col">ID</th>
-                    <th scope="col">Nome</th>
+                    
+                    <th scope="col">Piatto</th>
                     <th scope="col">Prezzo</th>
                     <th scope="col">Visibilità</th>
                     <th scope="col">Descrizione</th>
@@ -22,19 +22,21 @@
                     <th scope="col">Edita</th>
                     <th scope="col">Mostra</th>
                     <th scope="col">Cancella</th>
-                    <th scope="col">Visibilità</th>
+                    <th scope="col">Disponibile nel menù</th>
                 </tr>
             </thead>
             <tbody>
                 @foreach ($dishes as $dish)
                     <tr>
-                        <td>{{ $dish->id }}</td>
+                        
                         <td>{{ $dish->name }}</td>
                         <td>${{ $dish->price }}</td>
                         <td>{{ $dish->visible }}</td>
                         <td>{{ $dish->description }}</td>
-                        <td>{{ $dish->created_at }}</td>
-                        <td>{{ $dish->updated_at }}</td>
+                        <td>{{ $dish->updated_at->formatLocalized('%e %B %Y') }}</td>
+                        <td>{{ $dish->updated_at->formatLocalized('%e %B %Y') }}</td>
+                        
+
                         <td>
                             <a href="{{ route('admin.dishes.edit', $dish) }}" class="mx-1">
                                 <i class="fa-solid fa-pen-to-square"></i>
