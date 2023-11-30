@@ -15,8 +15,7 @@
                 <tr>
                     
                     <th scope="col">Piatto</th>
-                    <th scope="col">Prezzo</th>
-                    <th scope="col">Descrizione</th>
+                    <th scope="col">Prezzo</th>              
                     <th scope="col">Data creazione</th>
                     <th scope="col">Ultimo aggiornamento</th>
                     <th scope="col">Modifica</th>
@@ -31,8 +30,7 @@
                     <tr>
                         
                         <td>{{ $dish->name }}</td>
-                        <td>${{ $dish->price }}</td>
-                        <td>{{ $dish->description }}</td>
+                        <td>${{ $dish->price }}</td>                      
                         <td>{{ $dish->created_at->formatLocalized('%e %B %Y') }}</td>
                         <td>{{ $dish->updated_at->formatLocalized('%e %B %Y') }}</td>
                         
