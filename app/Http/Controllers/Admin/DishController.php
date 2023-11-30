@@ -130,7 +130,7 @@ class DishController extends Controller
 
     public function visible(Dish $dish, Request $request) {
         $data = $request->all();
-        $dish->visible = !Arr::exists($data, 'visible') ? 1 : null;
+        $dish->visible = !Arr::exists($data, 'visible') ? 1 : 0;
         $dish->save();
 
         return redirect()->back();
