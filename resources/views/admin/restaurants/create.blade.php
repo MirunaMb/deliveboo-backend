@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="container">
-
+        <div class="descr-edit">
         <span class=""><em>I campi obbligatori sono contrassegnati con *</em> </span>
 
         <form method="POST" action="{{ route('admin.restaurant.store') }}" class="row" enctype="multipart/form-data">
@@ -104,7 +104,7 @@
                 <button class="btn btn-secondary">Salva</button>
             </div>
         </form>
-
+        </div>
     </div>
 @endsection
 
