@@ -30,6 +30,9 @@ Route::middleware(['auth', 'verified'])
     Route::get('/', [AdminPageController::class, 'index'])->name('home');
     Route::resource('restaurant', RestaurantController::class);
     Route::resource('dishes', DishController::class);
+    Route::patch('/dishes/{dish}/visible',[DishController::class, 'visible'])->name('dishes.visible');
+
+
   });
 
 require __DIR__ . '/auth.php';
