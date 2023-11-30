@@ -95,7 +95,7 @@ body {
     font-family: Helvetica;
     -webkit-font-smoothing: antialiased;
     background: rgb(150, 62, 62);
-    // background-image: url("../../app/img/Livello\ 1.png");
+    background-image: url("../../app/img/Livello\ 1.png");
 }
 h2 {
     text-align: center;
@@ -218,3 +218,11 @@ h2 {
         text-align: center;
     }
 }
+
+.descr {
+    background-color: rgba(11, 24, 12, 0.849);
+    color: #ccc;
+    text-align: center;
+}
+
+// --------

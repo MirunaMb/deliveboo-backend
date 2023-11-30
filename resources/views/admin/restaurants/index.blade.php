@@ -8,7 +8,8 @@
 
 @section('content')
     <div class="container">
-        <table class="table">
+        <div class="table-wrapper">
+        <table class="fl-table">
             <thead>
                 <tr>
                     <th scope="col">ID</th>
@@ -28,24 +29,25 @@
                     <td>{{ $restaurant->phone_number }}</td>
                     <td>{{ $restaurant->vat }}</td>
                     <td>
-                        <a href="{{ route('admin.restaurant.edit', $restaurant) }}" class="mx-1">
+                        <a href="{{ route('admin.restaurant.edit', $restaurant) }}" class="mx-1 text-success fs-5 text">
                             <i class="fa-solid fa-pen-to-square"></i>
                         </a>
                     </td>
                     <td>
-                        <a href="{{ route('admin.restaurant.show', $restaurant) }}" class="mx-1">
+                        <a href="{{ route('admin.restaurant.show', $restaurant) }}" class="mx-1 text-success fs-5 text">
                             <i class="fa-solid fa-eye"></i>
                         </a>
                     </td>
                 </tr>
             </tbody>
         </table>
-        <a href="{{ route('admin.dishes.index') }}" class="btn btn-primary">
-            I miei piatti 🍜
-        </a>
-        <div class="mt-5">
-            <h5>Descrizione Ristorante</h5>
-            <p>{{ $restaurant->description }}</p>
         </div>
+
+        <a href="{{ route('admin.dishes.index') }}" class="btn btn-danger mt-5">
+            Vai a i miei piatti 🍜
+        </a>
+        
+
+        
     </div>
 @endsection
