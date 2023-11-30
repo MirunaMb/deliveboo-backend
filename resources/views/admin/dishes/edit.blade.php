@@ -59,8 +59,12 @@
 
             <div class="col-12 mb-4">
                 <label for="image" class="form-label">Carica immagine</label>
-                <input type="file" class="form-control" id="image" name="image">
-
+                <input type="file" class="form-control  @error('image') is-invalid @enderror" id="image" name="image">
+                @error('image')
+                <div class="invalid-feedback">
+                    {{ $message }}
+                </div>
+                @enderror
                 <div class="col-4">
                     @if ($dish->image)
                         <img src="{{ asset('storage/' . $dish->image) }}" class="img-fluid" alt="Anteprima dell'immagine"
