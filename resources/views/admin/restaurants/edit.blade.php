@@ -2,6 +2,7 @@
 
 @section('content')
     <div class="container">
+        <div class="descr-edit">
         <a href="{{ route('admin.restaurant.index') }}" class="btn btn-danger mt-3">
             Torna alla tabella </a>
         <div class="mt-2">
@@ -116,6 +117,7 @@
             </div>
         </form>
     </div>
+</div>
 @endsection
 
 @section('scripts')
