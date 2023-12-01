@@ -23,14 +23,17 @@ class DishController extends Controller
     }
 
     public function dishesByRestaurant($restaurantId)
-{
-    // Logica per ottenere i piatti di un ristorante specifico
-    // Assicurati di restituire i dati in un formato JSON
-
-    $dishes = Dish::where('restaurant_id', $restaurantId)->get();
-
-    return response()->json($dishes);
-}
+    {
+        // Logica per ottenere i piatti di un ristorante specifico
+        // Assicurati di restituire i dati in un formato JSON
+    
+        $dishes = Dish::where('restaurant_id', $restaurantId)
+            ->where('visible', 1) 
+            ->get();
+    
+        return response()->json($dishes);
+    }
+    
 
 
     /*
@@ -68,4 +71,5 @@ class DishController extends Controller
     {
         //
     }
+
 }
