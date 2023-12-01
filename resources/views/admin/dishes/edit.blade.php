@@ -101,7 +101,7 @@
         const inputFileElement = document.getElementById('image');
         const imagePreview = document.getElementById('image_preview');
         inputFileElement.addEventListener('change', function() { //prendo l'input,intercetto il change
-            alert('Immagine Cambiata');
+        
             const [file] = this.files //prendo il file dentro input
             //quando l'immagine viene cambiata crea un Array di files da dove andiamo a estrarrne un solo file 
 
