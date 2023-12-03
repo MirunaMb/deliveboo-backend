@@ -128,7 +128,8 @@ class DishController extends Controller
         return redirect()->route('admin.dishes.index');
     }
 
-    public function visible(Dish $dish, Request $request) {
+    public function visible(Dish $dish, Request $request)
+    {
         $data = $request->all();
         $dish->visible = !Arr::exists($data, 'visible') ? 1 : 0;
         $dish->save();
@@ -153,7 +154,7 @@ class DishController extends Controller
                 'name.string' => 'Il nome deve essere una stringa',
                 'name.max' => 'Il nome deve contenere un massimo di 50 caratteri',
 
-                'description.required' => 'La descrizione è obbligatorio',
+                'description.required' => 'La descrizione è obbligatoria',
 
                 'price.required' => 'Il prezzo è obbligatorio',
                 'price.min' => 'Il prezzo deve essere maggiore di 0',
