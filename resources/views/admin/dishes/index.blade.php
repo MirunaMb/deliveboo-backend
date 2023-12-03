@@ -18,11 +18,11 @@
                     <th scope="col">Prezzo</th>              
                     <th scope="col">Data creazione</th>
                     <th scope="col">Ultimo aggiornamento</th>
-                    <th scope="col">Modifica</th>
-                    <th scope="col">Mostra</th>
-                    <th scope="col">Cancella</th>
                     <th scope="col">Disponibile nel menù</th>
                     <th scope="col">Cambia la Disponibilità</th>
+                    <th scope="col">Mostra</th>
+                    <th scope="col">Modifica</th>
+                    <th scope="col">Cancella</th>
                 </tr>
             </thead>
             <tbody>
@@ -33,19 +33,31 @@
                         <td>${{ $dish->price }}</td>                      
                         <td>{{ $dish->created_at->formatLocalized('%e %B %Y') }}</td>
                         <td>{{ $dish->updated_at->formatLocalized('%e %B %Y') }}</td>
-                        
-                        
+                        <td>{{ $dish->visible ? 'Disponibile ✅' : 'Non disponibile ❌' }}</td>
+                        <td>
+                            <form action="{{ route('admin.dishes.visible', $dish) }}"method="POST" 
+                                id="form-visible-{{$dish->id }}">
+                                {{-- per modificare il valore della colonna --}}
+                                @method('PATCH')
+                                @csrf
+
+                                <label class="switch">
+                                    <input type="checkbox" name="visible" @if ($dish->visible) checked @endif>
+                                    <span class="slider round checkbox-visible" data-id="{{ $dish->id }}"></span>
+                                </label>
+                            </form>
+                        </td>
+                        <td>
+                            <a href="{{ route('admin.dishes.show', $dish) }}" class="mx-1 text-success fs-5 text">
+                                <i class="fa-solid fa-eye"></i>
+                            </a>
+                        </td>
                         <td>
                             <a href="{{ route('admin.dishes.edit', $dish) }}" class="mx-1 text-success fs-5 text">
                                 <i class="fa-solid fa-pen-to-square"></i>
                             </a>
                         </td>
                         
-                        <td>
-                            <a href="{{ route('admin.dishes.show', $dish) }}" class="mx-1 text-success fs-5 text">
-                                <i class="fa-solid fa-eye"></i>
-                            </a>
-                        </td>
                         <td>
                             <a href="#" class="mx-1" data-bs-toggle="modal"
                             data-bs-target="#delete-modal-{{ $dish->id }}">
@@ -83,20 +95,6 @@
                             </div>
                         </td>
                         {{-- * SWITCH per la visibilità dei piatti --}}
-                        <td>{{ $dish->visible ? 'Disponibile ✅' : 'Non disponibile ❌' }}</td>
-                        <td>
-                            <form action="{{ route('admin.dishes.visible', $dish) }}"method="POST" 
-                                id="form-visible-{{$dish->id }}">
-                                {{-- per modificare il valore della colonna --}}
-                                @method('PATCH')
-                                @csrf
-
-                                <label class="switch">
-                                    <input type="checkbox" name="visible" @if ($dish->visible) checked @endif>
-                                    <span class="slider round checkbox-visible" data-id="{{ $dish->id }}"></span>
-                                </label>
-                            </form>
-                        </td>
                     </tr>
                 @endforeach
             </tbody>
