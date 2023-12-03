@@ -13,7 +13,6 @@
         <table class="fl-table">
             <thead>
                 <tr>
-                    
                     <th scope="col">Piatto</th>
                     <th scope="col">Prezzo</th>              
                     <th scope="col">Data creazione</th>
@@ -28,9 +27,8 @@
             <tbody>
                 @foreach ($dishes as $dish)
                     <tr>
-                        
                         <td>{{ $dish->name }}</td>
-                        <td>${{ $dish->price }}</td>                      
+                        <td>€{{ $dish->price }}</td>                      
                         <td>{{ $dish->created_at->formatLocalized('%e %B %Y') }}</td>
                         <td>{{ $dish->updated_at->formatLocalized('%e %B %Y') }}</td>
                         <td>{{ $dish->visible ? 'Disponibile ✅' : 'Non disponibile ❌' }}</td>

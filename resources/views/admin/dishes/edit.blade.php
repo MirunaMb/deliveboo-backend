@@ -3,15 +3,13 @@
 @section('content')
     <div class="container">
         <div class="descr-edit">
-        <div class="container mt-2">
-            <a href="{{ route('admin.dishes.index') }}" class="btn btn-primary">
-                <- Torna alla tabella </a>
+        <div>
+            <a href="{{ route('admin.dishes.index') }}" class="btn btn-danger">Torna alla tabella </a>
         </div>
         <div class="mt-2">
             <span><em>I campi obbligatori sono contrassegnati con *</em> </span>
         </div>
-
-
+        {{-- * FORM EDIT RISTORANTE --}}
         <form method="POST" action="{{ route('admin.dishes.update', $dish) }}" class="row" enctype="multipart/form-data">
             @csrf
             @method('PATCH')
@@ -51,7 +49,7 @@
                     @enderror
                 </div>
             </div>
-            <div class="col-12 mb-4">
+            <div class="col-12 my-4">
                 <label for="description" class="form-label">Descrizione *</label>
                 <textarea name="description" id="description" class="form-control @error('description') is-invalid @enderror"
                     rows="5" required value="{{ old('description') ?? $dish->description }}">{{ old('description') ?? $dish->description }}</textarea>
@@ -64,7 +62,7 @@
 
             <!-- Anteprima dell'immagine esistente -->
             <div class="row">
-                <div class="col-6 mb-4">
+                <div class="col-6 my-4">
                     <label for="image" class="form-label">Carica immagine</label>
                     <input type="file" class="form-control @error('image') is-invalid @enderror" id="image" name="image">
                     @error('image')

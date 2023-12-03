@@ -4,17 +4,16 @@
     <div class="container">
         <div class="descr-edit">
             <div>
-                <a href="{{ route('admin.dishes.index') }}" class="btn btn-danger">
-                Torna alla tabella </a>
+                <a href="{{ route('admin.dishes.index') }}" class="btn btn-danger">Torna alla tabella </a>
             </div>
-            <span>
-                <em>I campi obbligatori sono contrassegnati con *</em>
-            </span>
-
+            <div class="mt-2">
+                <span>
+                    <em>I campi obbligatori sono contrassegnati con *</em>
+                </span>
+            </div>
             {{-- * FORM CREATE RISTORANTE --}}
             <form method="POST" action="{{ route('admin.dishes.store') }}" class="row" enctype="multipart/form-data">
             @csrf
-
                 <div class="col-6 my-4">
                     <label for="name" class="form-label ">Nome *</label>
                     <input type="text" name="name" id="name" class="form-control @error('name') is-invalid @enderror"

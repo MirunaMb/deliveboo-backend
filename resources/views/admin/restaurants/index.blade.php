@@ -13,7 +13,6 @@
         <table class="fl-table">
             <thead>
                 <tr>
-                    <th scope="col">ID</th>
                     <th scope="col">Nome</th>
                     <th scope="col">Indirizzo</th>
                     <th scope="col">Numero di cellulare</th>
@@ -24,7 +23,6 @@
             </thead>
             <tbody>
                 <tr>
-                    <th scope="row">{{ $restaurant->id }}</th>
                     <td>{{ $restaurant->name }}</td>
                     <td>{{ $restaurant->address }}</td>
                     <td>{{ $restaurant->phone_number }}</td>
