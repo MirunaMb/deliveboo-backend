@@ -17,7 +17,7 @@
             <h3>🍲Il mio piatto</h3>
         </div>
         <div class="card" style="width: 20rem;">
-            <img src="{{ asset('/storage/' . $dish->image) }}" class="img-thumbnail" alt="" style="">
+            <img src="{{ asset($dish->image) }}" class="img-thumbnail" alt="" style="">
             <div class="card-body">
                 <h6>ID: {{ $dish->id }} </h6>
                 <h5 class="card-title">{{ $dish->name }}</h5>
