@@ -2,9 +2,10 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Order;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Dish extends Model
 {
@@ -33,4 +34,8 @@ class Dish extends Model
     {
         return $image ? Storage::url($image) : "";
     }
+
+    public function posts() {
+        return $this->belongsToMany(Order::class);
+      }
 }
