@@ -17,9 +17,28 @@
             <div class="logo"> <img class="image-6" src="{{ url('img/unnamed.png') }}" alt=""></div>
             <div class="logo"> <img class="image-4" src="{{ url('img/203874376-sushi-logo-japanese-fast-food-design-vector-icon-template-symbol.jpg') }}" alt=""></div>
             <div class="logo"> <img class="image-1" src="{{ url('img/download.png') }}" alt=""></div>
+            <div class="logo"> <img class="image-5" src="{{ url('img/panini-mascot-logo-vector-design_1594-470.avif') }}" alt=""></div>
             <div class="logo"> <img class="image-5" src="{{ url('img/carrefour_logo_quadrato_td5eprc.jpg') }}" alt=""></div>
-          
+            <div class="logo"> <img class="image-5" src="{{ url('img/pasta-logo-hand-drawn-vector-illustration-chef-cooker-mustache-plate-spaghetti-colorful-italian-pasta-logo-hand-163269151.webp') }}" alt=""></div>
 
+
+        </div>
+
+        <div class="container">        
+                <div class="row row-map mt-5 justify-content-center align-items-center">
+                    <div class="col-4">
+                        <h3 class="fw-bold">Segui i tuoi ordini passo passo</h3>
+                        <p>I piatti e i prodotti che ami, consegnati in pochissimo tempo. Vedrai quando il rider ha ritirato l'ordine, che potrai seguire passo passo, e riceverai una notifica quando sarà quasi da te.</p>
+                        <div class="store mt-5">
+                            <span class="app-store">Scarica su App Store <i class="fa-brands fa-apple"></i></span>
+                            <span class="app-store"><i class="fa-brands fa-google-play"></i> Disponibile su Google Play </span>
+                        </div>
+
+                    </div>
+                    <div class="col-4 text-end">                
+                        <div> <img class="deliv-map" src="{{ url('img/mappa.png') }}" alt=""></div>
+                    </div>
+                </div>
         </div>
 
     </section>
