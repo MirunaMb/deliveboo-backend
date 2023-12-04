@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-sm navbar-light bg-light">
+<nav class="navbar navbar-expand-sm">
     <div class="container">
         <a class="navbar-brand" href="{{ route('guest.home') }}"><strong class="text-danger">DeliveBoo</strong></a>
         <button class="navbar-toggler d-lg-none" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavId"
