@@ -179,16 +179,16 @@ class RestaurantController extends Controller
 
                 'phone_number.required' => 'Il numero di telefono è obbligatorio',
                 'phone_number.string' => 'Il numero di telefono è una stringa',
-                'phone_number.max' => 'Il numero di telefono deve contenere un massimo di 15 caratteri',
+                'phone_number.max' => 'Il numero di telefono deve contenere un massimo di 15 numeri',
 
                 'vat.required' => 'La partita IVA è obbligatorio',
                 'vat.unique' => 'La partita IVA deve essere unica',
                 'vat.string' => 'La partita IVA è una stringa',
-                'vat.max' => 'La partita IVA deve contenere un massimo di 11 caratteri',
+                'vat.max' => 'La partita IVA deve contenere un massimo di 11 numeri',
 
-                'types.required' => 'la/e tipologia/e è necessaria/e',
+                'types.required' => 'La/e tipologia/e è/sono necessaria/e',
 
-                'description.required' => 'La descrizione è obbligatorio',
+                'description.required' => 'La descrizione è obbligatoria',
 
                 // DA GESTIRE QUANDO INSERIAMO IMAGE
                 'image.image' => 'Il file deve essere un immagine (jpg, jpeg, png, ecc)',
