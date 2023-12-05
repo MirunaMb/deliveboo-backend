@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\PageController as AdminPageController;
 use App\Http\Controllers\Guest\PageController as GuestPageController;
 use App\Http\Controllers\Admin\RestaurantController;
 use App\Http\Controllers\Admin\DishController;
+use App\Http\Controllers\Api\OrderController;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,6 +31,7 @@ Route::middleware(['auth', 'verified'])
     Route::get('/', [AdminPageController::class, 'index'])->name('home');
     Route::resource('restaurant', RestaurantController::class);
     Route::resource('dishes', DishController::class);
+    Route::resource('orders', OrderController::class);
     Route::patch('/dishes/{dish}/visible',[DishController::class, 'visible'])->name('dishes.visible');
 
 
