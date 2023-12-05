@@ -8,9 +8,19 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Order extends Model
 {
-    use HasFactory;
+  use HasFactory;
 
-    public function posts() {
-        return $this->belongsToMany(Dish::class);
-      }
+  protected $fillable = [
+    'guest_name',
+    'guest_surname',
+    'guest_address',
+    'guest_phone',
+    'guest_mail',
+    'total',
+  ];
+
+  public function posts()
+  {
+    return $this->belongsToMany(Dish::class);
+  }
 }
