@@ -1,7 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
-    <section class="container content mt-5">
+    <section class="container mt-5">
+        <div class="content">
         <div class="table-wrapper p-5">
             <div class="descr-edit text-end">
                 <h1><strong>Diventa un partner di Deliveboo</strong></h1>
@@ -23,25 +24,37 @@
 
 
         </div>
-
-        <div class="container">        
-                <div class="row row-map mt-5 justify-content-center align-items-center">
-                    <div class="col-4">
-                        <h3 class="fw-bold">Segui i tuoi ordini passo passo</h3>
-                        <p>I piatti e i prodotti che ami, consegnati in pochissimo tempo. Vedrai quando il rider ha ritirato l'ordine, che potrai seguire passo passo, e riceverai una notifica quando sarà quasi da te.</p>
-                        <div class="store mt-5">
-                            <span class="app-store">Scarica su App Store <i class="fa-brands fa-apple"></i></span>
-                            <span class="app-store"><i class="fa-brands fa-google-play"></i> Disponibile su Google Play </span>
+        <div class="container mt-5"> 
+            <div class="table-wrapper">       
+            <div class="row d-flex align-items-center">
+                <div class="col-md-6">
+                    <div class="card w-100 mt-5">
+                        <div class="card-body">
+                            <h3 class="fw-bold">Segui i tuoi ordini passo passo</h3>
+                            <p>I piatti e i prodotti che ami, consegnati in pochissimo tempo. Vedrai quando il rider ha ritirato l'ordine, che potrai seguire passo passo, e riceverai una notifica quando sarà quasi da te.</p>
+                            <div class="store mt-5">
+                                <a href="https://www.apple.com/it/app-store/" class=" btn">Scarica su App Store <i class="fa-brands fa-apple"></i></a>
+                                <a href="https://play.google.com/store/games?hl=it&gl=US&pli=1" class=" btn"><i class="fa-brands fa-google-play"></i> Disponibile su Google Play </a>                
+                            </div>
                         </div>
-
-                    </div>
-                    <div class="col-4 text-end">                
-                        <div> <img class="deliv-map" src="{{ url('img/mappa.png') }}" alt=""></div>
                     </div>
                 </div>
+                <div class="col-md-6">
+                    <div class="card w-100 mt-5">
+                        <img class="deliv-map img-fluid" src="{{ url('img/map-v.avif') }}" alt="">
+                    </div>
+                </div>
+            </div>
+            </div>
         </div>
 
+        <div class="container text-center mt-5">
+            <p>&copy; 2023 Deliveboo. Tutti i diritti riservati.</p>
+        </div>
+        
     </section>
+
+    
 @endsection
 
 @section('scripts')

@@ -1,14 +1,14 @@
 @import "~bootstrap/scss/bootstrap";
 
+.content {
+    margin-bottom: 200px;
+}
+
 .app-store {
     padding: 10px;
     background-color: black;
     color: white;
     font-size: small;
-}
-
-.content {
-    height: 1000px;
 }
 
 img {
@@ -112,6 +112,7 @@ input:checked + .slider:before {
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
 }
+
 body {
     margin-bottom: 100px;
     font-family: Helvetica;
@@ -147,6 +148,10 @@ body {
                 margin-left: 0;
             }
         }
+    }
+
+    .deliv-map {
+        max-width: 100%;
     }
 
     .block {
