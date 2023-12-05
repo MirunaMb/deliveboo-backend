@@ -2,58 +2,34 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Http\Controllers\Controller;
+use App\Models\Order;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class OrderController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     */
-    public function index()
-    {
-        //
-    }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     */
-    public function store(Request $request)
+    // Funzione che permette di ricevere i dati e salvarli nel database
+    public function GetOrder(Request $request)
     {
-        //
-    }
+        $request->validate([
+            'guest_name' => 'required|string',
+            'guest_surname' => 'required|string',
+            'guest_address' => 'required|string',
+            'guest_phone' => 'required|string',
+            'guest_mail' => 'nullable|email',
+            'total' => 'required|numeric',
+        ]);
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     */
-    public function show($id)
-    {
-        //
-    }
+        $order = Order::create([
+            'guest_name' => $request->guest_name,
+            'guest_surname' => $request->guest_surname,
+            'guest_address' => $request->guest_address,
+            'guest_phone' => $request->guest_phone,
+            'guest_mail' => $request->guest_mail,
+            'total' => $request->total,
+        ]);
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     */
-    public function destroy($id)
-    {
-        //
+        return response()->json(['message' => 'Ordine ricevuto con successo', 'order_id' => $order->id], 201);
     }
 }
