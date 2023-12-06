@@ -11,6 +11,8 @@ use App\Http\Requests\Orders\OrderRequest;
 class OrderController extends Controller
 {
 
+    
+
     // Funzione che permette di ricevere i dati e salvarli nel database
     public function GetOrder(Request $request)
     {
