@@ -19,7 +19,7 @@ class OrderController extends Controller {
             'guest_address' => 'required|string',
             'guest_phone' => 'required|string',
             'guest_mail' => 'nullable|email',
-            'total' => 'required|numeric',
+            'totalItem' => 'required|numeric',
         ]);
 
         $order = Order::create([
@@ -28,11 +28,20 @@ class OrderController extends Controller {
             'guest_address' => $request->guest_address,
             'guest_phone' => $request->guest_phone,
             'guest_mail' => $request->guest_mail,
-            'total' => $request->total,
+            'totalItem' => $request->totalItem,
         ]);
 
         return response()->json(['message' => 'Ordine ricevuto con successo', 'order_id' => $order->id], 201);
     }
+
+
+
+
+
+
+
+
+
     public function Generate(Request $request, Gateway $gateway) {
         $token = $gateway->clientToken()->generate();
         $data = [

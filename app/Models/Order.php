@@ -16,7 +16,7 @@ class Order extends Model
     'guest_address',
     'guest_phone',
     'guest_mail',
-    'total',
+    'totalItem',
   ];
 
   public function posts()
