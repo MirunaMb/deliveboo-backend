@@ -35,7 +35,7 @@ class Dish extends Model
         return $image ? Storage::url($image) : "";
     }
 
-    public function posts() {
+    public function order() {
         return $this->belongsToMany(Order::class);
       }
 }
