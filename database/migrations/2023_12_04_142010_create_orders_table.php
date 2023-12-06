@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('guest_address');
             $table->string('guest_phone');
             $table->string('guest_mail')->nullable();
-            $table->decimal('total');
+            $table->decimal('totalItem');
             $table->timestamps();
         });
     }
