@@ -8,10 +8,12 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Orders\OrderRequest;
 
-class OrderController extends Controller {
+class OrderController extends Controller
+{
 
     // Funzione che permette di ricevere i dati e salvarli nel database
-    public function GetOrder(Request $request) {
+    public function GetOrder(Request $request)
+    {
 
         $request->validate([
             'guest_name' => 'required|string',
@@ -20,6 +22,7 @@ class OrderController extends Controller {
             'guest_phone' => 'required|string',
             'guest_mail' => 'nullable|email',
             'totalItem' => 'required|numeric',
+            'cart' => 'required|array'
         ]);
 
         $order = Order::create([
@@ -30,6 +33,13 @@ class OrderController extends Controller {
             'guest_mail' => $request->guest_mail,
             'totalItem' => $request->totalItem,
         ]);
+
+
+        
+        foreach ($request->cart as $item) {
+            $order->dishes()->attach($item['id'], ['quantity' => $item['qty']]);
+        }
+
 
         return response()->json(['message' => 'Ordine ricevuto con successo', 'order_id' => $order->id], 201);
     }
@@ -42,7 +52,8 @@ class OrderController extends Controller {
 
 
 
-    public function Generate(Request $request, Gateway $gateway) {
+    public function Generate(Request $request, Gateway $gateway)
+    {
         $token = $gateway->clientToken()->generate();
         $data = [
             'success' => true,
@@ -50,7 +61,8 @@ class OrderController extends Controller {
         ];
         return response()->json($data, 200);
     }
-    public function MakePayment(OrderRequest $request, Gateway $gateway, Order $order) {
+    public function MakePayment(OrderRequest $request, Gateway $gateway, Order $order)
+    {
         $result = $gateway->transaction()->sale([
             'amount' => 10,
             'paymentMethodNonce' => $request->token,
@@ -58,7 +70,7 @@ class OrderController extends Controller {
                 'submitForSettlement' => true
             ]
         ]);
-        if($result->success) {
+        if ($result->success) {
             $data = [
                 'message' => 'Transazione eseguita correttamente',
                 'success' => true

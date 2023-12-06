@@ -17,10 +17,11 @@ class Order extends Model
     'guest_phone',
     'guest_mail',
     'totalItem',
+    'cart',
   ];
 
-  public function posts()
+  public function dishes()
   {
-    return $this->belongsToMany(Dish::class);
+    return $this->belongsToMany(Dish::class)->withTimestamps();
   }
 }
