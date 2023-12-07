@@ -11,7 +11,7 @@ use App\Http\Requests\Orders\OrderRequest;
 class OrderController extends Controller
 {
 
-    
+
 
     // Funzione che permette di ricevere i dati e salvarli nel database
     public function GetOrder(Request $request)
@@ -37,7 +37,7 @@ class OrderController extends Controller
         ]);
 
 
-        
+
         foreach ($request->cart as $item) {
             $order->dishes()->attach($item['id'], ['quantity' => $item['qty']]);
         }
@@ -54,7 +54,7 @@ class OrderController extends Controller
 
 
 
-    public function Generate(Request $request, Gateway $gateway)
+    public function Generate(Request $request, Gateway $gateway, Order $order)
     {
         $token = $gateway->clientToken()->generate();
         $data = [
@@ -63,10 +63,12 @@ class OrderController extends Controller
         ];
         return response()->json($data, 200);
     }
-    public function MakePayment(OrderRequest $request, Gateway $gateway, Order $order)
+    public function MakePayment(Request $request, Gateway $gateway, Order $order)
     {
+
+
         $result = $gateway->transaction()->sale([
-            'amount' => 10,
+            'amount' => $request->amount,
             'paymentMethodNonce' => $request->token,
             'options' => [
                 'submitForSettlement' => true
@@ -81,7 +83,8 @@ class OrderController extends Controller
         } else {
             $data = [
                 'message' => 'Transazione rifiutata',
-                'success' => false
+                'success' => false,
+                'error' => $result->message,
             ];
             return response()->json($data, 401);
         }
