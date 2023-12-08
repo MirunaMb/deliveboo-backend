@@ -22,15 +22,7 @@
         <div>
             <h3>Il mio piatto</h3>
         </div>
-        <!DOCTYPE html>
-        <html lang="en">
-        <head>
-            <meta charset="UTF-8">
-            <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <title>Piatto Delizioso</title>
-            <link rel="stylesheet" href="styles.css">
-        </head>
-        <body>
+
             <div class="plate-card">
                 <div class="badge-dish">
                     <span class="price">€{{ $dish->price }}</span>
@@ -39,16 +31,11 @@
                     <div class="caption">{{ $dish->name }}</div>
                     <div class="description">{{ $dish->description }}</div>
                     <div class="plate-image">
-                        <img src="{{ asset($dish->image) }}" alt="{{ $dish->name }}">
+                        <img src="{{ asset($dish->image) }}">
                     </div>
                     <div class="updated-at">Aggiornato il: {{ $dish->updated_at }}</div>
                 </div>
             </div>
-            
-            
-            
-        </body>
-        </html>
-        
+
     </div>
 @endsection
