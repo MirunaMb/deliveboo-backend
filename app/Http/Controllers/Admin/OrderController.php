@@ -16,7 +16,12 @@ class OrderController extends Controller
     public function index()
     {
         // Ottieni l'ID del ristorante associato all'utente autenticato
+        if (Auth::user()->restaurant === null) {
+            abort(403, 'NOT FOUND');
+        }
+
         $restaurantId = Auth::user()->restaurant->id;
+
 
         // Ottieni gli ordini relativi a quel ristorante
         $orders = Order::whereHas('dishes.restaurant', function ($query) use ($restaurantId) {
@@ -34,7 +39,12 @@ class OrderController extends Controller
     public function show(Order $order)
     {
         // Ottieni l'ID del ristorante associato all'utente autenticato
+        if (Auth::user()->restaurant === null) {
+            abort(403, 'NOT FOUND');
+        }
+
         $restaurantId = Auth::user()->restaurant->id;
+
 
         // Verifica se l'ordine appartiene al ristorante dell'utente autenticato
         if ($order->dishes->where('restaurant_id', $restaurantId)->isEmpty()) {
