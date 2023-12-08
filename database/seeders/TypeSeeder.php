@@ -16,14 +16,14 @@ class TypeSeeder extends Seeder
      */
     public function run()
     {
-        $labels = ["Italiano", "Francese", "Inglese", "Americano"];
+        // $labels = ["Italiano", "Francese", "Inglese", "Americano"];
 
-        foreach ($labels as $label) {
-            $type = new Type();
-            $type->label = $label;
+        // foreach ($labels as $label) {
+        //     $type = new Type();
+        //     $type->label = $label;
 
-            $type->save();
-        }
+        //     $type->save();
+        // }
     }
 
 }
