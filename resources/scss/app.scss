@@ -1,5 +1,12 @@
 @import "~bootstrap/scss/bootstrap";
 
+.main-cont {
+    background-color: #30a981;
+}
+.container-sm {
+    padding: 30px;
+}
+
 .content {
     margin-bottom: 200px;
 }
@@ -123,6 +130,7 @@ body {
     }
 
     footer {
+        max-height: 150px;
         position: fixed;
         bottom: 0;
         width: 100%;
