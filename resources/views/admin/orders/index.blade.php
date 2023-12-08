@@ -23,6 +23,7 @@
             <table class="fl-table">
                 <thead>
                     <tr>
+                        <th scope="col">Data Ordine</th>
                         <th scope="col">Nome Utente</th>
                         <th scope="col">Cognome Utente</th>
                         <th scope="col">Indirizzo</th>
@@ -35,6 +36,7 @@
                 <tbody>
                     @foreach ($orders as $order)
                         <tr>
+                            <td>{{ $order->created_at->formatLocalized(('%e/%m/%Y'))}}</td>
                             <td>{{ $order->guest_name }}</td>
                             <td>{{ $order->guest_surname }}</td>
                             <td>{{ $order->guest_address }}</td>
