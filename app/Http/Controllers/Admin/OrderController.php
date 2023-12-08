@@ -41,7 +41,9 @@ class OrderController extends Controller
             abort(404, 'NOT FOUND');
         }
 
-        return view('admin.orders.show', compact('order'));
+        $dishes = $order->dishes()->withPivot('quantity')->get();
+
+        return view('admin.orders.show', compact('order', 'dishes'));
     }
 
 
