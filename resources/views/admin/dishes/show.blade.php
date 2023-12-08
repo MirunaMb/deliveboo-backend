@@ -22,21 +22,33 @@
         <div>
             <h3>Il mio piatto</h3>
         </div>
-        <div class="card" style="width: 30rem;">
-            <img src="{{ asset($dish->image) }}" class="img-thumbnail" alt="" style="">
-            <div class="card-body">
-                <h5 class="card-title">{{ $dish->name }}</h5>
+        <!DOCTYPE html>
+        <html lang="en">
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Piatto Delizioso</title>
+            <link rel="stylesheet" href="styles.css">
+        </head>
+        <body>
+            <div class="plate-card">
+                <div class="badge-dish">
+                    <span class="price">€{{ $dish->price }}</span>
+                </div>
+                <div class="plate-details">
+                    <div class="caption">{{ $dish->name }}</div>
+                    <div class="description">{{ $dish->description }}</div>
+                    <div class="plate-image">
+                        <img src="{{ asset($dish->image) }}" alt="{{ $dish->name }}">
+                    </div>
+                    <div class="updated-at">Aggiornato il: {{ $dish->updated_at }}</div>
+                </div>
             </div>
-            <ul class="list-group list-group-flush">
-                <li class="list-group-item"><strong>Nome: </strong>{{ $dish->name }}</li>
-                <li class="list-group-item"><strong>Prezzo: </strong>€ {{ $dish->price }}</li>
-                {{-- <li class="list-group-item"><strong>Creato il: </strong>{{$dish->created_at}}</li> --}}
-                <li class="list-group-item"><strong>Aggiornato il: </strong>{{ $dish->updated_at }}</li>
-            </ul>
-            <div class="card-body">
-                <h6>Descrizione</h6>
-                <p class="card-text">{{ $dish->description }}</p>
-            </div>
-        </div>
+            
+            
+            
+        </body>
+        </html>
+        
     </div>
 @endsection

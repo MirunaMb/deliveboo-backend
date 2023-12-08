@@ -435,3 +435,86 @@ h2 {
 .btn:hover ul li:nth-child(3) a {
     transition-delay: 0.25s;
 }
+// ..............
+/* Stile generale per la card del piatto */
+.plate-card {
+    position: relative;
+    display: flex;
+    width: 100%;
+    background-color: #ffffff;
+    border: 2px solid #e0e0e0;
+    border-radius: 15px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    margin-bottom: 20px;
+    background-image: url("../../public/img/2094221-astratto-sfocato-ristorante-sfondo-gratuito-foto.jpg");
+}
+
+/* Stile per l'immagine del piatto */
+.plate-image {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+}
+
+.plate-image img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+/* Stile per i dettagli del piatto */
+.plate-details {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+}
+
+/* Stile per il titolo del piatto */
+.caption {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+/* Stile per la descrizione del piatto */
+.description {
+    font-size: 16px;
+    color: #777;
+    margin-top: 10px;
+}
+
+/* Stile per il badge del prezzo */
+.badge-dish {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: #e74c3c;
+    padding: 10px 15px;
+    border-radius: 5px;
+    color: #fff;
+}
+
+/* Stile per la data di aggiornamento */
+.updated-at {
+    font-size: 14px;
+    color: #777;
+    margin-top: 10px;
+}
+
+/* Stile per il prezzo nel badge */
+.price {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+/* Stile per i bottoni di navigazione */
+.btn {
+    margin-top: 10px;
+}
