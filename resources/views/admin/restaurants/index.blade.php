@@ -9,41 +9,60 @@
 @section('content')
 
 <div class="container">
-    <div class="mt-5 row"> 
-        <div class="col">
-            <a href="{{ route('admin.restaurant.edit', $restaurant) }}" class="btn mx-1">
-                Modifica <i class="fa-solid fa-pen-to-square"></i>
-            </a>
-        </div>
+   
         {{-- <div class="col text-end">
             <a href="{{ route('admin.restaurant.show', $restaurant) }}" class="btn mx-1">
                 Vedi <i class="fa-solid fa-eye"></i>
             </a>
         </div> --}}
-    </div>
-
-    <div class="card mt-5 main-cont text-white ">
+<div class=" p-5">
+    <div class="card card-rest">
         <div class="card-header" >
-            <h1 class="text-center">{{$restaurant->name}}</h1>
-        </div>
-            <div class="card-body">
-                
-                
-                <ul class="d-flex justify-content-around text-white">
-                    <li>Indirizzo: {{ $restaurant->address }}</li>
-                    <li>Numero di telefono: {{ $restaurant->phone_number }}</li>
-                    <li>Partita Iva: {{ $restaurant->vat }}</li>
-                </ul>
+            <div class="mt-5 row "> 
                
-                <div class="text-center">
-                    <a href="{{ route('admin.dishes.index') }}" class="btn btn-danger mt-5">
-                        Vedi tutti i piatti 🍜
-                    </a>
+                <div class="col-8">
+                    <img src="{{$restaurant->image}}" class=" img-fluid" alt="">
                 </div>
-            </div>      
+                <div class="col p-4 ">
+                    <div class="card-head">
+                        <div><h3>{{$restaurant->name}}</h3></div>
+                    </div>
+                    <ul class="list-group list-group-flush lh-lg">
+                        <li><strong>Indirizzo: </strong>{{$restaurant->address}}</li>
+                        <li><strong>Numero: </strong>{{$restaurant->phone_number}}</li>
+                        <li><strong>Partita Iva</strong>{{$restaurant->vat}}</li>
+                        <li><strong>Creato il: </strong>{{$restaurant->created_at}}</li>
+                        <li><strong>Aggiornato il: </strong>{{$restaurant->updated_at}}</li>
+                        <li><strong>Descrizione: </strong>{{$restaurant->description}}</li>
+                        <li><strong>Tipo: </strong>
+                            @forelse ($restaurant->types as $type)
+                            <span class="badge bg-success mx-1">{{$type->label}}</span>
+                            {{--  @unless($loop->last), @else . @endunless --}}
+                            @empty
+                                No type
+                            @endforelse    
+                        </li>
+                    </ul>
+                    <div class="col text-center mt-5">
+                        <a href="{{ route('admin.restaurant.edit', $restaurant) }}" class="button mx-1">
+                            Modifica <i class="fa-solid fa-pen-to-square"></i>
+                        </a>
+                    </div>
+
+                    <div class="text-center">
+                        <a href="{{ route('admin.dishes.index') }}" class="btn btn-danger mt-5">
+                            Vedi tutti i piatti 🍜
+                        </a>
+                    </div>
+            </div>
+                
+               
+            </div>
+            </div>                 
+            
         </div>
         
-        
+    </div>       
 
         {{-- <div class="text-black mt-5">
         <div class="table-wrapper">

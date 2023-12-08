@@ -1,5 +1,26 @@
 @import "~bootstrap/scss/bootstrap";
 
+body {
+    background-size: cover;
+    background-image: url("../../public/img/2094221-astratto-sfocato-ristorante-sfondo-gratuito-foto.jpg");
+}
+
+.button {
+    text-decoration: none;
+    background-color: #30a981;
+    color: #ffffff;
+    padding: 10px;
+    border-radius: 15px;
+}
+.button:hover {
+    font-size: large;
+    padding: 12px;
+}
+
+.card-rest {
+    background-color: rgba(255, 255, 255, 0.401);
+}
+
 .main-cont {
     background-color: #30a981;
 }
