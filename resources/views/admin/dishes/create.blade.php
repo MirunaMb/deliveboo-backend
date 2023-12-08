@@ -2,15 +2,17 @@
 
 @section('content')
     <div class="container">
-        <div class="descr-edit">
-            <div>
-                <a href="{{ route('admin.dishes.index') }}" class="btn btn-danger">Torna alla tabella </a>
-            </div>
-            <div class="mt-2">
-                <span>
-                    <em>I campi obbligatori sono contrassegnati con *</em>
-                </span>
-            </div>
+        <div class="container-sm">
+            <div class="card">
+                <div class="card-header d-flex justify-content-between">
+                    <h3>Aggiungi il tuo piatto</h3>
+                <div>
+                    <a href="{{ route('admin.dishes.index') }}" class="btn btn-danger">Torna alla tabella </a>
+                </div>
+                </div>
+    
+                <div class="card-body">
+                    <span class=""><em>I campi obbligatori sono contrassegnati con *</em> </span>
             {{-- * FORM CREATE RISTORANTE --}}
             <form method="POST" action="{{ route('admin.dishes.store') }}" class="row" enctype="multipart/form-data">
             @csrf
@@ -75,6 +77,7 @@
                     <button type="submit" class="btn btn-success" id="submitBtn">Salva</button>
                 </div>
             </form>
+            </div>
         </div>
     </div>
 @endsection
