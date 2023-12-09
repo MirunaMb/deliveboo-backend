@@ -19,9 +19,7 @@
             </a>
         </div>
         {{-- * DISH CARD --}}
-        <div>
-            <h3>Il mio piatto</h3>
-        </div>
+        
 
             <div class="plate-card">
                 <div class="badge-dish">
