@@ -17,8 +17,8 @@
 @endsection
 
 @section('content')
-    <div class="container-tb justify-content-center p-5">
-        <div class="table-wrapper p-5">
+    <div class="container-tb d-flex justify-content-center p-5">
+        <div class="table-wrapper-2 p-5">
             <h1 class="order-title">Tabella Ordini</h1>
             <table class="fl-table">
                 <thead>
