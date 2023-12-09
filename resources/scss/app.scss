@@ -216,9 +216,8 @@ h2 {
     border-radius: 5px;
     font-size: 12px;
     font-weight: normal;
-    // border: none;
+    border: none;
     border-collapse: collapse;
-    width: 100%;
     max-width: 100%;
     background-color: white;
 }
@@ -316,6 +315,7 @@ h2 {
     }
 }
 
+// trasparenze
 .descr {
     background-color: rgba(11, 24, 12, 0.849);
     color: #ccc;
