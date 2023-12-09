@@ -31,7 +31,7 @@
                     <div class="plate-image">
                         <img src="{{ asset($dish->image) }}">
                     </div>
-                    <div class="updated-at">Aggiornato il: {{ $dish->updated_at }}</div>
+                    <div class="updated-at">Aggiornato il: {{ $dish->updated_at->formatLocalized('%e/%m/%Y') }}</div>
                 </div>
             </div>
 
