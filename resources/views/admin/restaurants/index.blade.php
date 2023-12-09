@@ -26,7 +26,7 @@
                     <ul class="list-group list-group-flush lh-lg">
                         <li><strong>Indirizzo: </strong>{{$restaurant->address}}</li>
                         <li><strong>Numero: </strong>{{$restaurant->phone_number}}</li>
-                        <li><strong>Partita Iva</strong>{{$restaurant->vat}}</li>
+                        <li><strong>Partita Iva: </strong>{{$restaurant->vat}}</li>
                         <li><strong>Creato il: </strong>{{$restaurant->created_at->formatLocalized('%e/%m/%Y')}}</li>
                         <li><strong>Aggiornato il: </strong>{{$restaurant->updated_at->formatLocalized('%e/%m/%Y')}}</li>
                         <li><strong>Descrizione: </strong>{{$restaurant->description}}</li>

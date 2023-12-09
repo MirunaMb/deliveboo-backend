@@ -28,7 +28,7 @@
                         <li class="list-group-item"><strong>Nome: </strong>{{ $restaurant->name }}</li>
                         <li class="list-group-item"><strong>Indirizzo: </strong>{{ $restaurant->address }}</li>
                         <li class="list-group-item"><strong>Numero: </strong>{{ $restaurant->phone_number }}</li>
-                        <li class="list-group-item"><strong>Partita Iva</strong>{{ $restaurant->vat }}</li>
+                        <li class="list-group-item"><strong>Partita Iva: </strong>{{ $restaurant->vat }}</li>
                         <li class="list-group-item"><strong>Creato il:
                             </strong>{{ $restaurant->created_at->formatLocalized('%e/%m/%Y') }}</li>
                         <li class="list-group-item"><strong>Aggiornato il:
