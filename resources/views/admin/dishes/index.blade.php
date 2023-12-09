@@ -29,8 +29,8 @@
                     <tr>
                         <td>{{ $dish->name }}</td>
                         <td>€{{ $dish->price }}</td>                      
-                        <td>{{ $dish->created_at->formatLocalized('%e %B %Y') }}</td>
-                        <td>{{ $dish->updated_at->formatLocalized('%e %B %Y') }}</td>
+                        <td>{{ $dish->created_at->formatLocalized('%e/%m/%Y') }}</td>
+                        <td>{{ $dish->updated_at->formatLocalized('%e/%m/%Y') }}</td>
                         <td>{{ $dish->visible ? 'Disponibile ✅' : 'Non disponibile ❌' }}</td>
                         <td>
                             <form action="{{ route('admin.dishes.visible', $dish) }}"method="POST" 
