@@ -2,9 +2,6 @@
 
 @section('content')
 <div class="container">
-    {{-- <h2 class="fs-4 text-secondary my-4">
-        {{ __('Dashboard') }}
-    </h2> --}}
     <div class="row justify-content-center mt-5">
         <div class="col">
             <div class="card">
@@ -21,6 +18,11 @@
                 </div>
             </div>
         </div>
+    </div>
+
+    <div class="text-center">
+        <a class="btn btn-danger mt-5" href="{{ route('admin.restaurant.index') }}">Il mio ristorante</a>
+
     </div>
 </div>
 @endsection
