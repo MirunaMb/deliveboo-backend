@@ -80,7 +80,7 @@
                             @foreach ($types as $type)
                                 <div class="col-3 mb-3">
                                     <input type="checkbox" id="type-{{ $type->id }}" value="{{ $type->id }}"
-                                        name="types[]" class="form-check-control" @if (in_array($type->id, old('types', $restaurant_types ?? []))) checked @endif>
+                                        name="types[]" class="form-check-control" required @if (in_array($type->id, old('types', $restaurant_types ?? []))) checked @endif>
                                     <label for="type-{{ $type->id }}">
                                         {{ $type->label }}
                                     </label>
