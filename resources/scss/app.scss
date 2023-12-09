@@ -1,5 +1,27 @@
 @import "~bootstrap/scss/bootstrap";
 
+body {
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-image: url("../../public/img/2094221-astratto-sfocato-ristorante-sfondo-gratuito-foto.jpg");
+}
+
+.button {
+    text-decoration: none;
+    background-color: #30a981;
+    color: #ffffff;
+    padding: 10px;
+    border-radius: 15px;
+}
+.button:hover {
+    font-size: large;
+    padding: 12px;
+}
+
+.card-rest {
+    background-color: rgba(255, 255, 255, 0.401);
+}
+
 .main-cont {
     background-color: #30a981;
 }
@@ -97,8 +119,6 @@ input:checked + .slider:before {
 }
 
 .container-tb {
-    background-color: rgba(27, 47, 28, 0.436);
-
     .dishes-title {
         margin: 20px;
         font-weight: bold;
@@ -198,9 +218,7 @@ h2 {
     font-weight: normal;
     border: none;
     border-collapse: collapse;
-    width: 100%;
     max-width: 100%;
-    white-space: nowrap;
     background-color: white;
 }
 
@@ -297,6 +315,7 @@ h2 {
     }
 }
 
+// trasparenze
 .descr {
     background-color: rgba(11, 24, 12, 0.849);
     color: #ccc;
@@ -313,7 +332,7 @@ h2 {
 }
 
 // --------
-
+//* stile bottone
 .btn {
     --btn-color: rgb(255, 0, 0);
     position: relative;
@@ -415,4 +434,90 @@ h2 {
 
 .btn:hover ul li:nth-child(3) a {
     transition-delay: 0.25s;
+}
+// ..............
+
+/* Stile generale per la card del piatto */
+.plate-card {
+    position: relative;
+    display: flex;
+    width: 80%;
+    max-width: 100%;
+    background-color: #ffffff;
+    border: 2px solid #e0e0e0;
+    border-radius: 15px;
+    box-shadow: 0px -5px 15px 0px rgba(11, 24, 12, 0.849);
+    overflow: hidden;
+    margin-bottom: 20px;
+    background-image: url("../../public/img/2094221-astratto-sfocato-ristorante-sfondo-gratuito-foto.jpg");
+}
+
+/* Stile per l'immagine del piatto */
+.plate-image {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+}
+
+.plate-image img {
+    border-radius: 20px;
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+/* Stile per i dettagli del piatto */
+.plate-details {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+}
+
+/* Stile per il titolo del piatto */
+.caption {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+/* Stile per la descrizione del piatto */
+.description {
+    font-size: 16px;
+    color: #343434;
+    margin-top: 10px;
+}
+
+/* Stile per il badge del prezzo */
+.badge-dish {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: #e74c3c;
+    padding: 10px 15px;
+    border-radius: 5px;
+    color: #fff;
+}
+
+/* Stile per la data di aggiornamento */
+.updated-at {
+    font-size: 14px;
+    color: #777;
+    margin-top: 10px;
+}
+
+/* Stile per il prezzo nel badge */
+.price {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+/* Stile per i bottoni di navigazione */
+.btn {
+    margin-top: 10px;
 }
