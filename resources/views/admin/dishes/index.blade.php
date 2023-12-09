@@ -8,7 +8,7 @@
 
 @section('content')
 <div class="container p-5">
-<div class="table-wrapper p-5">
+<div class="table-wrapper-2 p-5">
             <h1 class="dishes-title">I miei piatti</h1>
         <table class="fl-table">
             <thead>
