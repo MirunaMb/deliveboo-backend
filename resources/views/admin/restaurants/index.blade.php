@@ -10,11 +10,7 @@
 
 <div class="container">
    
-        {{-- <div class="col text-end">
-            <a href="{{ route('admin.restaurant.show', $restaurant) }}" class="btn mx-1">
-                Vedi <i class="fa-solid fa-eye"></i>
-            </a>
-        </div> --}}
+
 <div class=" p-5">
     <div class="card card-rest">
         <div class="card-header" >
@@ -64,46 +60,6 @@
         
     </div>       
 
-        {{-- <div class="text-black mt-5">
-        <div class="table-wrapper">
-        <table class="fl-table">
-            <thead>
-                <tr>
-                    <th scope="col">Nome</th>
-                    <th scope="col">Indirizzo</th>
-                    <th scope="col">Numero di cellulare</th>
-                    <th scope="col">Partita Iva</th>
-                    <th scope="col">Modifica</th>
-                    <th scope="col">Mostra</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>{{ $restaurant->name }}</td>
-                    <td>{{ $restaurant->address }}</td>
-                    <td>{{ $restaurant->phone_number }}</td>
-                    <td>{{ $restaurant->vat }}</td>
-                    <td>
-                        <a href="{{ route('admin.restaurant.edit', $restaurant) }}" class="mx-1 text-success fs-5 text">
-                            <i class="fa-solid fa-pen-to-square"></i>
-                        </a>
-                    </td>
-                    <td>
-                        <a href="{{ route('admin.restaurant.show', $restaurant) }}" class="mx-1 text-success fs-5 text">
-                            <i class="fa-solid fa-eye"></i>
-                        </a>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-        <a href="{{ route('admin.dishes.index') }}" class="btn btn-danger mt-5">
-            Vedi tutti i piatti 🍜
-        </a>
-        </div>
-
-        
-
-        </div> --}}
     @section('footer')
     <footer class="footer">
         <div class="container">
