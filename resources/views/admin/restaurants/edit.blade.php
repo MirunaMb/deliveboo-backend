@@ -2,7 +2,9 @@
 
 @section('content')
     <div class="container">
-        <div class="descr-edit">
+        <div class="container-sm">
+            <div class="card card-rest">
+                <div class="card-header">
         <a href="{{ route('admin.restaurant.index') }}" class="btn btn-danger mt-3">
             Torna alla tabella </a>
         <div class="mt-2">
@@ -117,7 +119,10 @@
                 <button id="submit-button" class="btn btn-secondary">Salva</button>
             </div>
         </form>
-    </div>
+    
+</div>
+</div>
+</div>
 </div>
 @endsection
 
