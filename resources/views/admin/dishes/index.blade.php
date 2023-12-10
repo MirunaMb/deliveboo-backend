@@ -73,9 +73,9 @@
                                                 aria-label="Close"></button>
                                         </div>
                                         <div class="modal-body">
-                                            Do you want to delete "<strong>{{ $dish->title }}</strong>"? Click <span
-                                            class="text-danger">"Delete"</span> to continue or go <span
-                                            class="text-primary">"Back"</span> to dishes.
+                                            Sei sicuro di voler cancellare "<strong>{{ $dish->title }}</strong>"? <span
+                                            class="text-danger">"Cancella"</span> per continuare o <span
+                                            class="text-primary">"Annulla e torna"</span> ai piatti.
                                         </div>
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-primary"
