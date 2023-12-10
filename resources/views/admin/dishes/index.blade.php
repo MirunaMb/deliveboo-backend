@@ -72,20 +72,18 @@
                                             <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                 aria-label="Close"></button>
                                         </div>
-                                        <div class="modal-body">
-                                            Sei sicuro di voler cancellare "<strong>{{ $dish->title }}</strong>"? <span
-                                            class="text-danger">"Cancella"</span> per continuare o <span
-                                            class="text-primary">"Annulla e torna"</span> ai piatti.
+                                        <div class="modal-body fs-5">
+                                            Sei sicuro di voler cancellare  <strong>"{{ $dish->name }}"? </strong>
                                         </div>
                                         <div class="modal-footer">
-                                            <button type="button" class="btn btn-primary"
-                                                data-bs-dismiss="modal">Back</button>
-                                                
+                                            <button type="button" class="btn" data-bs-dismiss="modal">
+                                                Annulla
+                                            </button>
                                                 <form action="{{ route('admin.dishes.destroy', $dish) }}" method="POST"
                                                 class="mx-2">
                                                 @csrf
                                                 @method('DELETE')
-                                                <button class="btn btn-danger">Delete</button>
+                                                <button class="btn">Cancella</button>
                                             </form>
                                         </div>
                                     </div>
