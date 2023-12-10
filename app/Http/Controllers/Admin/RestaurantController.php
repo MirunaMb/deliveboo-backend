@@ -144,7 +144,7 @@ class RestaurantController extends Controller
         }
 
         /* $restaurant->update($data); */
-        return redirect()->route('admin.restaurant.show', $restaurant);
+        return redirect()->route('admin.restaurant.index', $restaurant);
     }
 
     /*
